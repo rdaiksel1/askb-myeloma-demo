@@ -385,15 +385,8 @@ export default function App() {
       // Mark as queried immediately
       setQueriedComponents(prev => new Set([...prev, componentId]));
 
-      // Activate orange border for 3 seconds
+      // Activate orange border — cleared when streaming finishes
       setActiveQueryComponents(prev => new Set([...prev, componentId]));
-      setTimeout(() => {
-        setActiveQueryComponents(prev => {
-          const next = new Set(prev);
-          next.delete(componentId);
-          return next;
-        });
-      }, 3000);
 
       // Append system-query row
       appendMsg({
@@ -428,6 +421,11 @@ export default function App() {
               : m
             ));
             setStreamingMsgId(null);
+            setActiveQueryComponents(prev => {
+              const next = new Set(prev);
+              next.delete(componentId);
+              return next;
+            });
             return;
           }
           wordIdx++;
