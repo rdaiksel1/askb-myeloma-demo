@@ -70,14 +70,14 @@ export default function ComponentCard({
   }
 
   const barBg = barFlash
-    ? '#1a3a1a'
+    ? '#181818'
     : askASKBEnabled
-    ? '#0d1a0d'
+    ? '#111111'
     : '#0d0d0d';
 
-  const barBorderTop = askASKBEnabled ? '1px solid #1a3a1a' : '1px solid #1a1a1a';
-  const textColor = askASKBEnabled ? '#4caf82' : '#333333';
-  const rightTextColor = askASKBEnabled ? 'rgba(76,175,130,0.7)' : '#222222';
+  const barBorderTop = askASKBEnabled ? '1px solid #222222' : '1px solid #1a1a1a';
+  const textColor = askASKBEnabled ? '#6b9e7e' : '#333333';
+  const rightTextColor = askASKBEnabled ? '#4a6a56' : '#222222';
 
   return (
     <div style={{
@@ -215,14 +215,14 @@ export default function ComponentCard({
         }}
         onMouseEnter={e => {
           if (askASKBEnabled && !hasQueried && !isActiveQuery) {
-            e.currentTarget.style.background = '#0f2a12';
-            e.currentTarget.style.borderTopColor = '#2a5a2a';
+            e.currentTarget.style.background = '#181818';
+            e.currentTarget.style.borderTopColor = '#2e2e2e';
           }
         }}
         onMouseLeave={e => {
           if (askASKBEnabled && !hasQueried && !isActiveQuery) {
-            e.currentTarget.style.background = '#0d1a0d';
-            e.currentTarget.style.borderTopColor = '#1a3a1a';
+            e.currentTarget.style.background = '#111111';
+            e.currentTarget.style.borderTopColor = '#222222';
           }
         }}
       >
