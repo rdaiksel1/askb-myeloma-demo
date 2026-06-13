@@ -52,19 +52,18 @@ export default function PatientFunnelChart({ onAskASKB, hasQueried, isActiveQuer
             <rect x={divX} y={padT} width={chartW - (divX - padL)} height={chartH}
               fill="#E07B00" fillOpacity="0.05" />
 
-            {/* Bispecific compression window — above shaded area */}
-            <text x={divX + 8} y={padT - 6} fill="#E07B00" fontSize="9" opacity="0.7" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">Bispecific compression window</text>
+            {/* Bispecific compression window — inside shaded area, top */}
+            <text x={divX + 8} y={padT + 16} fill="#E07B00" fontSize="9" opacity="0.6" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">Compression window</text>
 
             <line x1={appX} y1={padT} x2={appX} y2={padT+chartH} stroke="#5b9bd5" strokeWidth="1" strokeDasharray="3,3" opacity="0.5" />
 
-            {/* MajecTEC-3 label — two short lines above chart */}
-            <text x={appX} y={padT - 18} textAnchor="middle" fill="#5b9bd5" fontSize="10" opacity="0.8" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">MajecTEC-3</text>
-            <text x={appX} y={padT - 6} textAnchor="middle" fill="#5b9bd5" fontSize="10" opacity="0.8" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">approval</text>
+            {/* MajecTEC-3 — inside chart area at top, left of line */}
+            <text x={appX - 6} y={padT + 14} textAnchor="end" fill="#5b9bd5" fontSize="9" opacity="0.8" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">MajecTEC-3</text>
 
             <line x1={xScale(4)} y1={padT} x2={xScale(4)} y2={padT+chartH} stroke="#888" strokeWidth="1" strokeDasharray="2,4" opacity="0.3" />
 
-            {/* 35% 2L threshold — above chart */}
-            <text x={xScale(4)} y={padT - 6} textAnchor="middle" fill="#888" fontSize="10" opacity="0.6" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">35% 2L share</text>
+            {/* 35% 2L share — inside chart area at top, right of line */}
+            <text x={xScale(4) + 6} y={padT + 14} textAnchor="start" fill="#888" fontSize="9" opacity="0.6" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">35% 2L share</text>
 
             <path d={toPath(basePts)} fill="none" stroke="#e8e8e8" strokeWidth="2" />
             <path d={toPath(scenPts)} fill="none" stroke="#E07B00" strokeWidth="2" />
