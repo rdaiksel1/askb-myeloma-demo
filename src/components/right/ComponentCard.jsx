@@ -1,0 +1,254 @@
+import { useState } from 'react';
+
+/* Keyframe for the ✦ pulse — injected once */
+if (typeof document !== 'undefined' && !document.getElementById('askb-pulse-style')) {
+  const style = document.createElement('style');
+  style.id = 'askb-pulse-style';
+  style.textContent = `
+    @keyframes askb-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    .askb-spark {
+      display: inline-block;
+      animation: askb-pulse 2s ease-in-out infinite;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+export default function ComponentCard({
+  title,
+  moreLabel = 'More ›',
+  explainer,
+  children,
+  // Ask ASKB props
+  askASKBEnabled = false, // new: true for active, false for muted/disabled
+  onAskASKB,      // callback when button clicked
+  hasQueried,     // boolean — disables button after first use
+  isActiveQuery,  // boolean — orange left border while streaming
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const [flash, setFlash] = useState(false);
+  const [tooltip, setTooltip] = useState(false);
+  const [barFlash, setBarFlash] = useState(false);
+
+  function handleMoreClick() {
+    setFlash(true);
+    setTooltip(true);
+    setTimeout(() => setFlash(false), 300);
+    setTimeout(() => setTooltip(false), 1500);
+  }
+
+  function handleAskClick() {
+    if (!askASKBEnabled || hasQueried || isActiveQuery) return;
+    setBarFlash(true);
+    setTimeout(() => setBarFlash(false), 200);
+    if (onAskASKB) onAskASKB();
+  }
+
+  const leftBorder = isActiveQuery
+    ? '3px solid #E07B00'
+    : hasQueried
+    ? '1px solid #2a2a2a'
+    : '1px solid #252525';
+
+  /* Bar state labels */
+  let leftLabel, rightLabel;
+  if (!askASKBEnabled) {
+    leftLabel = '✦ Ask ASKB';
+    rightLabel = 'Search across BI · sell-side · transcripts · clinical →';
+  } else if (isActiveQuery) {
+    leftLabel = '✦ ASKB is researching...';
+    rightLabel = '';
+  } else if (hasQueried) {
+    leftLabel = '✓ Context loaded';
+    rightLabel = '';
+  } else {
+    leftLabel = '✦ Ask ASKB';
+    rightLabel = 'Search across BI · sell-side · transcripts · clinical →';
+  }
+
+  const barBg = barFlash
+    ? '#1a3a1a'
+    : askASKBEnabled
+    ? '#0d1a0d'
+    : '#0d0d0d';
+
+  const barBorderTop = askASKBEnabled ? '1px solid #1a3a1a' : '1px solid #1a1a1a';
+  const textColor = askASKBEnabled ? '#4caf82' : '#333333';
+  const rightTextColor = askASKBEnabled ? 'rgba(76,175,130,0.7)' : '#222222';
+
+  return (
+    <div style={{
+      background: '#1a1a1a',
+      border: flash ? '1px solid #E07B00' : '1px solid #252525',
+      borderLeft: leftBorder,
+      borderRadius: 8,
+      overflow: 'hidden',
+      transition: 'border-color 0.3s ease, border-left 0.3s ease',
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+    }}>
+      {/* Card header */}
+      {title && (
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '12px 16px 0 16px',
+        }}>
+          <div style={{ fontSize: 12, fontWeight: 600, color: '#e8e8e8' }}>
+            {title}
+          </div>
+          <div style={{ position: 'relative' }}>
+            <button
+              onClick={handleMoreClick}
+              style={{
+                background: '#1a1a1a',
+                border: '1px solid #333',
+                color: '#8a8a8a',
+                fontSize: 11,
+                borderRadius: 4,
+                padding: '3px 8px',
+                cursor: 'pointer',
+                transition: 'border-color 0.15s, color 0.15s',
+                lineHeight: 1.4,
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = '#E07B00';
+                e.currentTarget.style.color = '#E07B00';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = '#333';
+                e.currentTarget.style.color = '#8a8a8a';
+              }}
+            >
+              {moreLabel}
+            </button>
+            {tooltip && (
+              <div style={{
+                position: 'absolute',
+                top: '100%',
+                right: 0,
+                marginTop: 4,
+                background: '#2a2a2a',
+                border: '1px solid #3a3a3a',
+                borderRadius: 4,
+                padding: '4px 8px',
+                fontSize: 11,
+                color: '#aaaaaa',
+                whiteSpace: 'nowrap',
+                zIndex: 100,
+                pointerEvents: 'none',
+              }}>
+                Coming soon
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Card body */}
+      <div style={{ padding: title ? '0 0 0 0' : '0' }}>
+        {children}
+      </div>
+
+      {/* Expandable explainer — no Ask ASKB button inside */}
+      {explainer && (
+        <div style={{ borderTop: '1px solid #252525' }}>
+          <button
+            onClick={() => setExpanded(e => !e)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              width: '100%',
+              background: 'none',
+              border: 'none',
+              padding: '8px 12px',
+              cursor: 'pointer',
+              textAlign: 'left',
+              color: '#8a8a8a',
+              fontSize: 11,
+              transition: 'color 0.15s',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.color = '#aaaaaa'; }}
+            onMouseLeave={e => { e.currentTarget.style.color = '#8a8a8a'; }}
+          >
+            <span style={{ fontSize: 10 }}>{expanded ? '▾' : '▸'}</span>
+            About this analysis
+          </button>
+          <div style={{
+            maxHeight: expanded ? '300px' : '0',
+            overflow: 'hidden',
+            transition: 'max-height 0.25s ease',
+          }}>
+            <div style={{
+              padding: '0 12px 12px 12px',
+              fontSize: 11,
+              color: '#8a8a8a',
+              lineHeight: 1.6,
+            }}>
+              {explainer}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Persistent Ask ASKB bar — always visible at bottom of card */}
+      <div
+        onClick={askASKBEnabled && !hasQueried && !isActiveQuery ? handleAskClick : undefined}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          height: 36,
+          padding: '0 12px',
+          background: barBg,
+          borderTop: barBorderTop,
+          cursor: askASKBEnabled && !hasQueried && !isActiveQuery ? 'pointer' : 'default',
+          transition: 'background 0.2s ease, border-top-color 0.2s ease',
+          flexShrink: 0,
+          userSelect: 'none',
+        }}
+        onMouseEnter={e => {
+          if (askASKBEnabled && !hasQueried && !isActiveQuery) {
+            e.currentTarget.style.background = '#0f2a12';
+            e.currentTarget.style.borderTopColor = '#2a5a2a';
+          }
+        }}
+        onMouseLeave={e => {
+          if (askASKBEnabled && !hasQueried && !isActiveQuery) {
+            e.currentTarget.style.background = '#0d1a0d';
+            e.currentTarget.style.borderTopColor = '#1a3a1a';
+          }
+        }}
+      >
+        {/* Left: ✦ Ask ASKB with pulse on the spark when enabled */}
+        <span style={{
+          fontSize: 12,
+          fontWeight: 600,
+          color: textColor,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 4,
+        }}>
+          <span className={askASKBEnabled && !hasQueried ? 'askb-spark' : undefined}>✦</span>
+          {' '}{leftLabel.replace('✦ ', '')}
+        </span>
+
+        {/* Right: source hint */}
+        {rightLabel && (
+          <span style={{
+            fontSize: 10,
+            color: rightTextColor,
+          }}>
+            {rightLabel}
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
