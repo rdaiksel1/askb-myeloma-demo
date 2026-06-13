@@ -97,7 +97,17 @@ function ResponseParts({ parts, title }) {
 }
 
 // System query row — "searching" indicator
-function SystemQueryRow({ sourceCount, queryText }) {
+function SystemQueryRow({ sourceCount, queryText, done }) {
+  if (done) {
+    return (
+      <div className="system-query-row" style={{ opacity: 0.45 }}>
+        <span style={{ fontSize: 12, color: '#4caf82' }}>✓</span>
+        <span style={{ fontSize: 11, color: '#8a8a8a' }}>
+          Searched {sourceCount} sources · {queryText}
+        </span>
+      </div>
+    );
+  }
   return (
     <div className="system-query-row">
       <span style={{ fontSize: 14 }}>🔍</span>
@@ -127,7 +137,7 @@ function ASKBSynthesisResponse({ label, streamingParts, parts }) {
 }
 
 // Render a single message from the queue
-function Message({ msg, streamingMsgId, demoStep, showDiseaseChip, showTooltip, onDiseaseChipClick, showQ2GenBtn, showQ3GenBtn, onGenCtxQ2, onGenCtxQ3, q2GenDone, q3GenDone }) {
+function Message({ msg, index, messages, streamingMsgId, demoStep, showDiseaseChip, showTooltip, onDiseaseChipClick, showQ2GenBtn, showQ3GenBtn, onGenCtxQ2, onGenCtxQ3, q2GenDone, q3GenDone }) {
   const isStreaming = msg.id === streamingMsgId;
 
   if (msg.type === 'thinking') {
@@ -232,8 +242,11 @@ function Message({ msg, streamingMsgId, demoStep, showDiseaseChip, showTooltip, 
   }
 
   if (msg.type === 'system-query') {
+    // Done when the next message is a completed synthesis response
+    const nextMsg = messages[index + 1];
+    const done = nextMsg && nextMsg.type === 'askb-synthesis' && nextMsg.parts && !nextMsg.streamingParts;
     return (
-      <SystemQueryRow sourceCount={msg.sourceCount} queryText={msg.queryText} />
+      <SystemQueryRow sourceCount={msg.sourceCount} queryText={msg.queryText} done={done} />
     );
   }
 
@@ -300,10 +313,12 @@ export default function LeftPane({
           flexDirection: 'column',
         }}
       >
-        {messages.map(msg => (
+        {messages.map((msg, index) => (
           <Message
             key={msg.id}
             msg={msg}
+            index={index}
+            messages={messages}
             streamingMsgId={streamingMsgId}
             demoStep={demoStep}
             showDiseaseChip={showDiseaseChip}
