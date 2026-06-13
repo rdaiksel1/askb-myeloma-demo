@@ -2,8 +2,8 @@ import ComponentCard from './ComponentCard';
 
 export default function MarketGrowthChart({ onAskASKB, hasQueried, isActiveQuery }) {
   const width = 800;
-  const height = 200;
-  const padL = 52, padR = 30, padT = 30, padB = 36;
+  const height = 240;
+  const padL = 52, padR = 30, padT = 40, padB = 40;
   const chartW = width - padL - padR;
   const chartH = height - padT - padB;
 
@@ -77,13 +77,22 @@ export default function MarketGrowthChart({ onAskASKB, hasQueried, isActiveQuery
               x1={iraX} y1={padT} x2={iraX} y2={padT + chartH}
               stroke="#E07B00" strokeWidth="1" strokeDasharray="4,3" opacity="0.6"
             />
-            <text x={iraX + 4} y={padT + 12} fill="#E07B00" fontSize="9" opacity="0.8">IRA negotiation</text>
+
+            {/* IRA negotiation label — above chart */}
+            <text x={iraX + 4} y={padT - 6} fill="#E07B00" fontSize="10" opacity="0.8" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">IRA negotiation</text>
+
+            {/* IRA impact zone label — below shaded area near bottom */}
+            <text x={iraX + 6} y={padT + chartH - 6} fill="#E07B00" fontSize="9" opacity="0.6" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">IRA impact zone</text>
 
             <path d={toPath(consPoints)} fill="none" stroke="#e8e8e8" strokeWidth="1.5" strokeDasharray="5,3" opacity="0.5" />
+
+            {/* Street consensus label — clearly above the dashed line */}
+            <text x={padL + 10} y={yScale(35) - 6} fill="#e8e8e8" fontSize="10" opacity="0.5" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">Street consensus</text>
+
             <path d={toPath(biPoints)} fill="none" stroke="#E07B00" strokeWidth="2" />
 
-            <text x={xScale(5)} y={yScale(26.2) - 8} fill="#E07B00" fontSize="10">5.2% CAGR</text>
-            <text x={iraX + 4} y={yScale(32)} fill="#E07B00" fontSize="9" opacity="0.7">IRA impact zone</text>
+            {/* 5.2% CAGR label — above BI line midpoint with more clearance */}
+            <text x={xScale(4)} y={yScale(26.2) - 14} fill="#E07B00" fontSize="10" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">5.2% CAGR</text>
 
             {biPoints.map((p, i) => (
               <circle key={i} cx={p[0]} cy={p[1]} r="3" fill="#E07B00" />

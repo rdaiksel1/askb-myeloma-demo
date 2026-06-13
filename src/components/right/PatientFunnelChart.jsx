@@ -2,8 +2,8 @@ import ComponentCard from './ComponentCard';
 
 export default function PatientFunnelChart({ onAskASKB, hasQueried, isActiveQuery }) {
   const width = 700;
-  const height = 200;
-  const padL = 60, padR = 20, padT = 30, padB = 36;
+  const height = 240;
+  const padL = 60, padR = 20, padT = 40, padB = 40;
   const chartW = width - padL - padR;
   const chartH = height - padT - padB;
 
@@ -41,23 +41,30 @@ export default function PatientFunnelChart({ onAskASKB, hasQueried, isActiveQuer
             {[8000,9000,10000,11000,12000].map(v => (
               <g key={v}>
                 <line x1={padL} y1={yScale(v)} x2={padL+chartW} y2={yScale(v)} stroke="#252525" strokeWidth="1" />
-                <text x={padL-6} y={yScale(v)+4} textAnchor="end" fill="#8a8a8a" fontSize="9">{(v/1000).toFixed(0)}K</text>
+                <text x={padL-6} y={yScale(v)+4} textAnchor="end" fill="#8a8a8a" fontSize="10">{(v/1000).toFixed(0)}K</text>
               </g>
             ))}
 
             {years.map((yr, i) => (
-              <text key={yr} x={xScale(i)} y={height-4} textAnchor="middle" fill="#8a8a8a" fontSize="9">{yr}</text>
+              <text key={yr} x={xScale(i)} y={height-4} textAnchor="middle" fill="#8a8a8a" fontSize="10">{yr}</text>
             ))}
 
             <rect x={divX} y={padT} width={chartW - (divX - padL)} height={chartH}
               fill="#E07B00" fillOpacity="0.05" />
-            <text x={divX + 8} y={padT + 14} fill="#E07B00" fontSize="9" opacity="0.7">Bispecific compression window</text>
+
+            {/* Bispecific compression window — above shaded area */}
+            <text x={divX + 8} y={padT - 6} fill="#E07B00" fontSize="9" opacity="0.7" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">Bispecific compression window</text>
 
             <line x1={appX} y1={padT} x2={appX} y2={padT+chartH} stroke="#5b9bd5" strokeWidth="1" strokeDasharray="3,3" opacity="0.5" />
-            <text x={appX+3} y={padT+22} fill="#5b9bd5" fontSize="8" opacity="0.8">MajecTEC-3 approval</text>
+
+            {/* MajecTEC-3 label — two short lines above chart */}
+            <text x={appX} y={padT - 18} textAnchor="middle" fill="#5b9bd5" fontSize="10" opacity="0.8" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">MajecTEC-3</text>
+            <text x={appX} y={padT - 6} textAnchor="middle" fill="#5b9bd5" fontSize="10" opacity="0.8" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">approval</text>
 
             <line x1={xScale(4)} y1={padT} x2={xScale(4)} y2={padT+chartH} stroke="#888" strokeWidth="1" strokeDasharray="2,4" opacity="0.3" />
-            <text x={xScale(4)+3} y={padT+36} fill="#888" fontSize="8" opacity="0.6">35% 2L threshold</text>
+
+            {/* 35% 2L threshold — above chart */}
+            <text x={xScale(4)} y={padT - 6} textAnchor="middle" fill="#888" fontSize="10" opacity="0.6" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">35% 2L share</text>
 
             <path d={toPath(basePts)} fill="none" stroke="#e8e8e8" strokeWidth="2" />
             <path d={toPath(scenPts)} fill="none" stroke="#E07B00" strokeWidth="2" />
