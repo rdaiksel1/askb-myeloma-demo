@@ -62,7 +62,7 @@ export default function ComponentCard({
     leftLabel = '✦ ASKB is researching...';
     rightLabel = '';
   } else if (hasQueried) {
-    leftLabel = '✓ Context loaded';
+    leftLabel = '✓ Added to conversation';
     rightLabel = '';
   } else {
     leftLabel = '✦ Ask ASKB';
