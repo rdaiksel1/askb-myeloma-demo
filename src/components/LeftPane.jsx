@@ -237,7 +237,7 @@ function Message({ msg, index, messages, streamingMsgId, demoStep, showDiseaseCh
         {!msg.isQ1 && msg.title && msg.title.includes('Darzalex') && isDone && showQ2GenBtn && (
           <div style={{ marginTop: 12 }}>
             <button className="generate-ctx-btn" onClick={onGenCtxQ2} disabled={q2GenDone}>
-              {q2GenDone ? '✓ Context added to dashboard' : '⚡ Add context to dashboard →'}
+              {q2GenDone ? '✓ Context added to dashboard' : '✦ Add context to dashboard →'}
             </button>
           </div>
         )}
@@ -246,7 +246,7 @@ function Message({ msg, index, messages, streamingMsgId, demoStep, showDiseaseCh
         {!msg.isQ1 && msg.title && msg.title.includes('Bispecific') && isDone && showQ3GenBtn && (
           <div style={{ marginTop: 12 }}>
             <button className="generate-ctx-btn" onClick={onGenCtxQ3} disabled={q3GenDone}>
-              {q3GenDone ? '✓ Context added to dashboard' : '⚡ Add context to dashboard →'}
+              {q3GenDone ? '✓ Context added to dashboard' : '✦ Add context to dashboard →'}
             </button>
           </div>
         )}
