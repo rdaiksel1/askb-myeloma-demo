@@ -52,8 +52,8 @@ export default function PatientFunnelChart({ onAskASKB, hasQueried, isActiveQuer
             <rect x={divX} y={padT} width={chartW - (divX - padL)} height={chartH}
               fill="#E07B00" fillOpacity="0.05" />
 
-            {/* Bispecific compression window — inside shaded area, top */}
-            <text x={divX + 8} y={padT + 16} fill="#E07B00" fontSize="9" opacity="0.6" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">Compression window</text>
+            {/* Bispecific compression window — bottom of shaded area */}
+            <text x={divX + 8} y={padT + chartH - 8} fill="#E07B00" fontSize="9" opacity="0.6" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">Compression window</text>
 
             <line x1={appX} y1={padT} x2={appX} y2={padT+chartH} stroke="#5b9bd5" strokeWidth="1" strokeDasharray="3,3" opacity="0.5" />
 
