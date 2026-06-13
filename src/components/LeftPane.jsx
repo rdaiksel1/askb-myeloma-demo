@@ -191,7 +191,20 @@ function Message({ msg, index, messages, streamingMsgId, demoStep, showDiseaseCh
                 onMouseEnter={e => { e.currentTarget.style.borderColor = '#E07B00'; e.currentTarget.style.background = '#1f1a10'; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = '#333'; e.currentTarget.style.background = '#1a1a1a'; }}
               >
-                <span>📊</span>
+                <span style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: 18,
+                  height: 18,
+                  borderRadius: '50%',
+                  background: '#E07B00',
+                  color: '#000000',
+                  fontSize: 8,
+                  fontWeight: 800,
+                  letterSpacing: '-0.02em',
+                  flexShrink: 0,
+                }}>BI</span>
                 <span>Multiple Myeloma Disease Overview</span>
                 <span style={{ color: '#E07B00' }}>›</span>
               </button>
