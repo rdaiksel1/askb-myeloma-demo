@@ -20,7 +20,7 @@ export const Q1_RESPONSE_PARTS = [
   {
     section: "Therapy Class Dynamics",
     text: "CD38 antibodies — led overwhelmingly by Darzalex — will represent approximately 46% of 2030 sales at $15.2 billion, down from ~55% today as newer classes grow around them. Darzalex's front-line penetration has reached 66% in transplant-eligible patients and is still expanding, which paradoxically creates the CD38-exposed population that drives CAR-T and bispecific demand downstream.",
-    chips: [{ analyst: "Terence Flynn", firm: "Goldman Sachs", showDot: true, dotColor: GREEN }]
+    chips: [{ analyst: "Terence Flynn", firm: "Morgan Stanley", showDot: true, dotColor: GREEN }]
   },
   {
     text: "CAR-T therapies are expected to capture 22% of the market by 2030 — approximately $7.3 billion split between Carvykti, anito-cel, and Abecma. The key risk to this figure is bispecific 2L uptake compressing the late-line patient pool that CAR-T depends on; BI models a 25% reduction in 3L/4L-eligible patients under the base Tecvayli scenario.",
@@ -72,8 +72,8 @@ export const Q2_RESPONSE_PARTS = [
   },
   {
     section: "Where the Street Disagrees",
-    text: "Most sell-side models still embed Faspro standalone eligibility in 2034, placing consensus Darzalex 2030 at $16.7 billion — only $0.2 billion below J&J's own implied guidance. Morgan Stanley's David Risinger has the highest estimate at $17.4 billion, explicitly discounting IRA bundling risk. Goldman's Terence Flynn is closer to BI at $15.9 billion after revising down 8% in March. The spread in estimates — $13 to $17 billion — is almost entirely a function of one variable: which year Faspro enters negotiation.",
-    chips: [{ analyst: "Terence Flynn", firm: "Goldman Sachs", showDot: true, dotColor: GREEN }]
+    text: "Most sell-side models still embed Faspro standalone eligibility in 2034, placing consensus Darzalex 2030 at $16.7 billion — only $0.2 billion below J&J's own implied guidance. Morgan Stanley's David Risinger has the highest estimate at $17.4 billion, explicitly discounting IRA bundling risk. Morgan Stanley's Terence Flynn revised down 8% in March to $15.9 billion, closer to our $14.7B base case. The spread in estimates — $13 to $17 billion — is almost entirely a function of one variable: which year Faspro enters negotiation.",
+    chips: [{ analyst: "Terence Flynn", firm: "Morgan Stanley", showDot: true, dotColor: GREEN }]
   }
 ];
 
@@ -96,9 +96,9 @@ export const ASKB_MARKET_GROWTH = {
       ],
     },
     {
-      text: "Goldman's Terence Flynn revised his 2030 Darzalex estimate down 8% in March following the HHS announcement on formulation bundling precedent, though still sits above BI at $15.9B.",
+      text: "Morgan Stanley's Terence Flynn revised his 2030 Darzalex estimate down 8% in March following the HHS announcement on formulation bundling precedent — his $15.9B estimate remains above our $14.7B base case.",
       chips: [
-        { analyst: "Terence Flynn", firm: "Goldman Sachs", showDot: true, dotColor: GREEN },
+        { analyst: "Terence Flynn", firm: "Morgan Stanley", showDot: true, dotColor: GREEN },
       ],
     },
     {
@@ -213,8 +213,8 @@ export const ASKB_THERAPY_CLASS = {
       chips: [{ analyst: "Sam Fazeli", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }],
     },
     {
-      text: "Goldman's Terence Flynn has modeled the CD38 class compressing from 55% of 2023 sales to 46% by 2030 — driven almost entirely by bispecific 2L uptake pulling patients away from CD38-based retreatment regimens.",
-      chips: [{ analyst: "Terence Flynn", firm: "Goldman Sachs", showDot: true, dotColor: GREEN }],
+      text: "Morgan Stanley's Terence Flynn has modeled the CD38 class compressing from 55% of 2023 sales to 46% by 2030 — driven almost entirely by bispecific 2L uptake pulling patients away from CD38-based retreatment regimens.",
+      chips: [{ analyst: "Terence Flynn", firm: "Morgan Stanley", showDot: true, dotColor: GREEN }],
     },
     {
       text: "CAR-T's 22% share by 2030 assumes Carvykti and anito-cel together reach approximately $5.4B — a figure that is highly sensitive to the bispecific 2L penetration rate, which BI models more conservatively than consensus.",
@@ -275,7 +275,7 @@ export const ASKB_PATIENT_ATTRITION = {
       chips: [{ analyst: "CMS Medicare Claims Data · 2025", firm: "", showDot: false }],
     },
     {
-      text: "BMO's Evan Seigerman has argued the attrition funnel is actually a bullish signal for bispecifics — their off-the-shelf availability removes the manufacturing wait that blocks CAR-T access, meaning bispecific penetration in 3L and 4L may outpace CAR-T faster than BI models.",
+      text: "BMO's Evan Seigerman has argued the attrition funnel is actually a bullish signal for bispecifics — their off-the-shelf availability removes the manufacturing wait that blocks CAR-T access, meaning bispecific penetration in 3L and 4L may outpace CAR-T faster than our models assume.",
       chips: [{ analyst: "Evan Seigerman", firm: "BMO Capital Markets", showDot: true, dotColor: RED }],
     },
     {
@@ -294,7 +294,7 @@ export const ASKB_COMPETITIVE_LANDSCAPE = {
       chips: [{ analyst: "Max Nisen", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }],
     },
     {
-      text: "Carvykti's -30% BI-versus-consensus gap is the bispecific compression story — BI models 25% fewer 3L/4L-eligible patients under the 2L Tecvayli scenario. Morgan Stanley's David Risinger sits at $3.1B for Carvykti 2030, above both BI and consensus, on the view that manufacturing capacity expansion is the binding constraint that will be resolved by 2027.",
+      text: "Carvykti's -30% gap to consensus reflects the bispecific compression story — our model shows 25% fewer 3L/4L-eligible patients under the 2L Tecvayli scenario. Morgan Stanley's David Risinger sits at $3.1B for Carvykti 2030, above both our estimate and consensus, on the view that manufacturing capacity expansion is the binding constraint that will be resolved by 2027.",
       chips: [{ analyst: "David Risinger", firm: "Morgan Stanley", showDot: true, dotColor: RED }],
     },
     {
@@ -326,7 +326,7 @@ export const ASKB_CATALYSTS = {
     },
     {
       text: "Anito-cel's December 2026 PDUFA date is the next binary event — approval is widely expected, but the label breadth matters. An earlier-line label (3L versus 4L) would be a material upside versus BI's model, which assumes a 3L-plus initial indication.",
-      chips: [{ analyst: "Terence Flynn", firm: "Goldman Sachs", showDot: true, dotColor: GREEN }],
+      chips: [{ analyst: "Terence Flynn", firm: "Morgan Stanley", showDot: true, dotColor: GREEN }],
     },
     {
       text: "Arlo-cel is the least-modeled catalyst on the list — a GPRC5D-targeting CAR-T with a post-BCMA retreatment positioning that creates a niche not captured in most competitive models. ASCO 2026 data showed a 71% ORR in heavily pretreated patients.",
@@ -371,7 +371,7 @@ export const ASKB_JJ_REVENUE = {
       chips: [{ analyst: "J&J Q4 2024 Earnings", firm: "", showDot: false }],
     },
     {
-      text: "The $2.0B IRA rebate drag is the single largest negative contributor in the waterfall — larger than generic erosion, larger than competitive pressure from bispecifics. Morgan Stanley's David Risinger excludes this drag entirely from his model, which explains most of the $12B gap between BI's $14.9B and consensus $26.9B.",
+      text: "The $2.0B IRA rebate drag is the single largest negative contributor in the waterfall — larger than generic erosion, larger than competitive pressure from bispecifics. Morgan Stanley's David Risinger excludes this drag entirely from his model, which explains most of the $12B gap between our $14.9B forecast and the $26.9B street consensus.",
       chips: [{ analyst: "David Risinger", firm: "Morgan Stanley", showDot: true, dotColor: RED }],
     },
     {
@@ -413,7 +413,7 @@ export const ASKB_BISPECIFIC_SHARE = {
       chips: [{ analyst: "Aude Gerspacher", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }],
     },
     {
-      text: "Elrexfio's 30% share reflects Pfizer's flexible dosing schedule as the primary differentiator — physicians treating community patients with transportation constraints specifically cite the option of monthly dosing after initial cycles. Wells Fargo's Mohit Bansal has the most bullish Elrexfio estimate on the street at $2.1B for 2030, above BI's class allocation.",
+      text: "Elrexfio's 30% share reflects Pfizer's flexible dosing schedule as the primary differentiator — physicians treating community patients with transportation constraints specifically cite the option of monthly dosing after initial cycles. Wells Fargo's Mohit Bansal has the most bullish Elrexfio estimate on the street at $2.1B for 2030, above our class allocation.",
       chips: [{ analyst: "Mohit Bansal", firm: "Wells Fargo", showDot: true, dotColor: GREEN }],
     },
     {
@@ -444,8 +444,8 @@ export const ASKB_THERAPY_SEQUENCING = {
       chips: [{ analyst: "MonumenTAL-1 · NEJM 2024", firm: "", showDot: false }],
     },
     {
-      text: "Goldman's Terence Flynn has the highest Talvey 2030 estimate on the street at $3.2B, predicated on earlier-line label expansion into 2L — a scenario BI treats as upside, not base case, given the ongoing TRIMM-3 combination trial data expected in late 2026.",
-      chips: [{ analyst: "Terence Flynn", firm: "Goldman Sachs", showDot: true, dotColor: GREEN }],
+      text: "Morgan Stanley's Terence Flynn has the highest Talvey 2030 estimate on the street at $3.2B, predicated on earlier-line label expansion into 2L — a scenario we treat as upside rather than base case, given the ongoing TRIMM-3 combination trial data expected in late 2026.",
+      chips: [{ analyst: "Terence Flynn", firm: "Morgan Stanley", showDot: true, dotColor: GREEN }],
     },
     {
       text: "The community/academic split at 4L — 39% CAR-T preference in community versus essentially 0% in practice due to logistics — captures the gap between physician intent and commercial reality that BI's model tries to explicitly bridge.",
