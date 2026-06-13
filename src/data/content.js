@@ -46,28 +46,53 @@ export const Q2_TEXT = "What happens to Darzalex sales if Faspro faces IRA price
 
 export const Q2_RESPONSE_PARTS = [
   {
-    text: "Faspro currently represents over 90% of Darzalex gross US sales, making it highly exposed to IRA Part B negotiations.",
-    chips: [{ analyst: "J&J Q4 2024 Earnings Call", firm: "", showDot: false }]
+    section: "The Faspro Exposure",
+    text: "Darzalex Faspro — the subcutaneous formulation — now represents over 90% of gross US Darzalex sales, having displaced IV administration almost entirely since 2022. This concentration is what makes the IRA question so consequential: virtually every dollar of US Darzalex revenue flows through the formulation that is most legally ambiguous under IRA Part B negotiation rules.",
+    chips: [
+      { analyst: "J&J Q4 2024 Earnings Call", firm: "", showDot: false },
+      { analyst: "Sam Fazeli", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }
+    ]
   },
   {
-    text: "The vast majority of US myeloma patients are Medicare-eligible.",
-    chips: [{ analyst: "CMS Medicare Part B Data 2024", firm: "", showDot: false }]
+    section: "Why Medicare Exposure Is Near-Total",
+    text: "Myeloma's median age of diagnosis is 69, making it one of the highest Medicare-penetration indications in oncology — approximately 75% of treated patients are Medicare Part B beneficiaries. Unlike solid tumors where younger patients shift the payer mix, myeloma's epidemiology means IRA negotiated prices would apply to the dominant share of Darzalex volume almost immediately upon implementation.",
+    chips: [
+      { analyst: "CMS Medicare Part B Data 2024", firm: "", showDot: false },
+      { analyst: "Max Nisen", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }
+    ]
   },
   {
-    text: "Under IRA mechanics, BI models an effective rebate rising to 45%, consistent with IRA cuts to date.",
-    chips: [{ analyst: "HHS IRA Negotiation Framework", firm: "", showDot: false }]
+    section: "The Legal Ambiguity — and Why It Matters",
+    text: "J&J's legal position is that Faspro is a distinct biological product with its own exclusivity running to 2036, making it ineligible for IRA negotiation until that year. HHS has not formally accepted or rejected this framing. The precedent that creates risk: in the 2028 IRA cycle, HHS negotiated Keytruda's SC formulation alongside IV pembrolizumab rather than treating it as a separate product — directly contrary to Merck's legal argument. BI treats this as applicable precedent.",
+    chips: [
+      { analyst: "HHS IRA Negotiation Framework", firm: "", showDot: false },
+      { analyst: "Terence Flynn", firm: "Goldman Sachs", showDot: true, dotColor: GREEN }
+    ]
   },
   {
-    text: "Cumulative US Darzalex revenue through 2030 would be reduced by approximately $42 billion vs. the baseline.",
-    chips: [{ analyst: "Max Nisen", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }]
+    section: "BI's Base Case vs. Bear Case",
+    text: "BI's base case models Faspro entering IRA negotiation in 2029 alongside IV Darzalex, with an effective rebate rising from ~20% to 45% — consistent with the average rebate depth HHS has achieved on the first eight negotiated drugs. Under this scenario, Darzalex 2030 US net sales reach $14.7 billion, 12% below street consensus of $16.7 billion. The bear case — a 55% effective rebate, in line with the most aggressive HHS precedent — would compress 2030 sales further to approximately $13.1 billion.",
+    chips: [
+      { analyst: "Sam Fazeli", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN },
+      { analyst: "Max Nisen", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }
+    ]
   },
   {
-    text: "The key uncertainty is whether the government treats Faspro as a distinct drug or prices it alongside the IV formulation.",
-    chips: [{ analyst: "Terence Flynn", firm: "Goldman Sachs", showDot: true, dotColor: GREEN }]
+    section: "The $42 Billion Cumulative Number",
+    text: "The $42 billion figure represents cumulative US Darzalex revenue foregone versus the no-IRA baseline across 2029–2032 — the four years spanning peak commercial Faspro sales before biosimilar entry. This is not a single-year impact: it compounds across the period when Darzalex would otherwise be generating $15–17 billion annually. It is the single largest near-term financial risk in J&J's pharmaceutical portfolio.",
+    chips: [
+      { analyst: "Max Nisen", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN },
+      { analyst: "Tim Anderson", firm: "Wolfe Research", showDot: true, dotColor: GREEN }
+    ]
   },
   {
-    text: "BI's base case assumes an additional 25% rebate from 2029, bringing forecast Darzalex 2030 sales to $14.7B — 12% below current consensus.",
-    chips: [{ analyst: "Sam Fazeli", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }]
+    section: "Where the Street Disagrees",
+    text: "Most sell-side models still embed Faspro standalone eligibility in 2034, placing consensus Darzalex 2030 at $16.7 billion — only $0.2 billion below J&J's own implied guidance. Morgan Stanley's David Risinger has the highest estimate at $17.4 billion, explicitly discounting IRA bundling risk. Goldman's Terence Flynn is closer to BI at $15.9 billion after revising down 8% in March. The spread in estimates — $13 to $17 billion — is almost entirely a function of one variable: which year Faspro enters negotiation.",
+    chips: [
+      { analyst: "David Risinger", firm: "Morgan Stanley", showDot: true, dotColor: RED },
+      { analyst: "Terence Flynn", firm: "Goldman Sachs", showDot: true, dotColor: GREEN },
+      { analyst: "Evan Seigerman", firm: "BMO Capital Markets", showDot: true, dotColor: RED }
+    ]
   }
 ];
 
