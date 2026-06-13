@@ -24,7 +24,7 @@ export default function RightPaneHeader({ surfacedByASKB }) {
           }}>
             Bloomberg Intelligence
           </span>
-          {/* BI badge — orange circle, white BI text */}
+          {/* BI badge — orange circle, black BI text */}
           <span style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -33,7 +33,7 @@ export default function RightPaneHeader({ surfacedByASKB }) {
             height: 28,
             borderRadius: '50%',
             background: '#E07B00',
-            color: '#ffffff',
+            color: '#000000',
             fontSize: 10,
             fontWeight: 800,
             letterSpacing: '-0.02em',
@@ -44,24 +44,8 @@ export default function RightPaneHeader({ surfacedByASKB }) {
         </div>
 
         {/* Sub-title */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 12 }}>
-          <span style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: 18,
-            height: 18,
-            borderRadius: '50%',
-            background: '#E07B00',
-            color: '#000000',
-            fontSize: 8,
-            fontWeight: 800,
-            letterSpacing: '-0.02em',
-            flexShrink: 0,
-          }}>BI</span>
-          <span style={{ fontSize: 13, color: '#c8c8c8', letterSpacing: '0.01em' }}>
-            Multiple Myeloma Disease Hub
-          </span>
+        <div style={{ fontSize: 13, color: '#c8c8c8', marginBottom: 12, letterSpacing: '0.01em' }}>
+          Multiple Myeloma Disease Hub
         </div>
 
         {/* Sam Fazeli people pill */}
