@@ -58,26 +58,26 @@ export default function RebateScenarioChart({ onAskASKB, hasQueried, isActiveQue
               stroke="#888" strokeWidth="1" strokeDasharray="2,4" opacity="0.6" />
 
             {/* Street consensus label — left side so it doesn't get clipped */}
-            <text x={padL + 8} y={consY - 6} textAnchor="start" fill="#888" fontSize="10" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">Street consensus $16.7B</text>
+            <text x={padL + 8} y={consY - 8} textAnchor="start" fill="#888" fontSize="10" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">Street consensus $16.7B</text>
 
             <path d={redZonePath} fill="#e05252" fillOpacity="0.12" />
 
             <line x1={xScale(iraIdx)} y1={padT} x2={xScale(iraIdx)} y2={padT + chartH}
               stroke="#fff" strokeWidth="1" strokeDasharray="3,3" opacity="0.3" />
 
-            {/* "Faspro eligible?" — second line above chart */}
-            <text x={xScale(iraIdx)} y={padT - 18} textAnchor="middle" fill="#e8e8e8" fontSize="9" opacity="0.6">Faspro eligible?</text>
-            {/* "IRA negotiation" — first line above chart */}
-            <text x={xScale(iraIdx)} y={padT - 6} textAnchor="middle" fill="#e8e8e8" fontSize="10" opacity="0.8" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">IRA negotiation</text>
+            {/* "Faspro eligible?" — top line above chart */}
+            <text x={xScale(iraIdx)} y={padT - 20} textAnchor="middle" fill="#e8e8e8" fontSize="9" opacity="0.6" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">Faspro eligible?</text>
+            {/* "IRA negotiation" — second line above chart */}
+            <text x={xScale(iraIdx)} y={padT - 8} textAnchor="middle" fill="#e8e8e8" fontSize="10" opacity="0.8" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">IRA negotiation</text>
 
             <path d={toPath(baselinePoints)} fill="none" stroke="#E07B00" strokeWidth="2" />
             <path d={toPath(iraPoints)} fill="none" stroke="#e05252" strokeWidth="2" strokeDasharray="5,3" />
 
-            {/* BI base label — left of 2030 point, offset upward */}
-            <text x={xScale(8) - 4} y={yScale(baseline[8]) - 8} textAnchor="end" fill="#E07B00" fontSize="10" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">BI base $16.5B</text>
+            {/* BI base label — above baseline endpoint */}
+            <text x={xScale(8)} y={yScale(baseline[8]) - 10} textAnchor="middle" fill="#E07B00" fontSize="10" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">BI base $16.5B</text>
 
-            {/* BI IRA scenario label — left of 2030 point, offset downward */}
-            <text x={xScale(8) - 4} y={yScale(ira[8]) + 14} textAnchor="end" fill="#e05252" fontSize="10" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">BI IRA scenario $14.7B</text>
+            {/* BI IRA scenario label — below IRA endpoint */}
+            <text x={xScale(8)} y={yScale(ira[8]) + 16} textAnchor="middle" fill="#e05252" fontSize="10" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">BI IRA scenario $14.7B</text>
 
             {baselinePoints.map((p, i) => <circle key={i} cx={p[0]} cy={p[1]} r="2.5" fill="#E07B00" />)}
             {iraPoints.map((p, i) => <circle key={i} cx={p[0]} cy={p[1]} r="2.5" fill="#e05252" />)}

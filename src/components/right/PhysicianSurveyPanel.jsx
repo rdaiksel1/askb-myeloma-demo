@@ -85,8 +85,8 @@ export default function PhysicianSurveyPanel({ onAskASKB, hasQueried, isActiveQu
                   transform={`rotate(-90 ${cx} ${cy})`}
                 />
               ))}
-              <text x={cx} y={cy - 4} textAnchor="middle" fill="#e8e8e8" fontSize="13" fontWeight="700">60%</text>
-              <text x={cx} y={cy + 10} textAnchor="middle" fill="#8a8a8a" fontSize="9">CAR-T</text>
+              <text x={cx} y={cy - 4} textAnchor="middle" fill="#e8e8e8" fontSize="13" fontWeight="700" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">60%</text>
+              <text x={cx} y={cy + 10} textAnchor="middle" fill="#8a8a8a" fontSize="9" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">CAR-T</text>
             </svg>
             <div>
               {segments.map(s => (

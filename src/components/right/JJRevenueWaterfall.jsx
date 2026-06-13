@@ -58,14 +58,29 @@ export default function JJRevenueWaterfall({ onAskASKB, hasQueried, isActiveQuer
                   background: b.color,
                   borderRadius: 3,
                   transition: `width 0.6s ease ${i * 0.1}s`,
-                  display: 'flex',
-                  alignItems: 'center',
-                  paddingLeft: 8,
+                  position: 'relative',
                 }}>
-                  <span style={{ fontSize: 11, fontWeight: 600, color: '#0d0d0d', whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums' }}>
+                </div>
+                {/* Label inside bar if bar is wide enough (>50px ~= value > 3), else to the right */}
+                {Math.abs(b.value) >= 3 ? (
+                  <span style={{
+                    position: 'absolute', top: 0, left: 8,
+                    lineHeight: '22px', fontSize: 11, fontWeight: 600,
+                    color: '#0d0d0d', whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums',
+                  }}>
                     {b.value > 0 ? '+' : ''}{b.value}B
                   </span>
-                </div>
+                ) : (
+                  <span style={{
+                    position: 'absolute', top: 0,
+                    left: `calc(${animate ? scaleW(b.value) : 0}% + 6px)`,
+                    lineHeight: '22px', fontSize: 11, fontWeight: 600,
+                    color: b.color, whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums',
+                    transition: `left 0.6s ease ${i * 0.1}s`,
+                  }}>
+                    {b.value > 0 ? '+' : ''}{b.value}B
+                  </span>
+                )}
               </div>
             </div>
           ))}
