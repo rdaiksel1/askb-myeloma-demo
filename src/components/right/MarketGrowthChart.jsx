@@ -81,8 +81,6 @@ export default function MarketGrowthChart({ onAskASKB, hasQueried, isActiveQuery
             {/* IRA negotiation label — above chart */}
             <text x={iraX + 4} y={padT - 6} fill="#E07B00" fontSize="10" opacity="0.8" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">IRA negotiation</text>
 
-            {/* IRA impact zone label — below shaded area near bottom */}
-            <text x={iraX + 6} y={padT + chartH - 6} fill="#E07B00" fontSize="9" opacity="0.6" paintOrder="stroke" stroke="#0d0d0d" strokeWidth="3" strokeLinejoin="round">IRA impact zone</text>
 
             <path d={toPath(consPoints)} fill="none" stroke="#e8e8e8" strokeWidth="1.5" strokeDasharray="5,3" opacity="0.5" />
 
