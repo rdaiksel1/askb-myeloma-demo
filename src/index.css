@@ -181,21 +181,23 @@ html, body, #root {
 }
 
 .next-btn {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  color: var(--text-primary);
-  padding: 8px 16px;
+  background: #E07B00;
+  border: 1px solid #E07B00;
+  color: #000000;
+  padding: 8px 18px;
   border-radius: 6px;
   cursor: pointer;
   font-size: 13px;
+  font-weight: 600;
   font-family: inherit;
   display: flex;
   align-items: center;
   gap: 6px;
   transition: background 0.15s, border-color 0.15s;
+  letter-spacing: 0.01em;
 }
-.next-btn:hover:not(:disabled) { background: #252525; border-color: #444; }
-.next-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.next-btn:hover:not(:disabled) { background: #c96f00; border-color: #c96f00; }
+.next-btn:disabled { opacity: 0.35; cursor: not-allowed; }
 
 .step-count {
   font-size: 11px;
