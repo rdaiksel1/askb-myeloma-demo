@@ -80,17 +80,20 @@ export default function ComponentCard({
   const rightTextColor = askASKBEnabled ? '#4a6a56' : '#222222';
 
   return (
-    <div style={{
-      background: '#1a1a1a',
-      border: flash ? '1px solid #E07B00' : '1px solid #252525',
-      borderLeft: leftBorder,
-      borderRadius: 8,
-      overflow: 'hidden',
-      transition: 'border-color 0.3s ease, border-left 0.3s ease',
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-    }}>
+    <div
+      className="card-new-flash"
+      style={{
+        background: '#1a1a1a',
+        border: flash ? '1px solid #E07B00' : '1px solid #252525',
+        borderLeft: leftBorder,
+        borderRadius: 8,
+        overflow: 'hidden',
+        transition: 'border-color 0.3s ease, border-left 0.3s ease',
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        animation: 'card-new-flash 2s ease-out forwards',
+      }}>
       {/* Card header */}
       {title && (
         <div style={{
