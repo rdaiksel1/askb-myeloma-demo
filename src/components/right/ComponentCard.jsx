@@ -56,7 +56,7 @@ export default function ComponentCard({
   /* Bar state labels */
   let leftLabel, rightLabel;
   if (!askASKBEnabled) {
-    leftLabel = '✦ Ask ASKB';
+    leftLabel = '✦ Learn More in ASKB';
     rightLabel = 'Search across BI · sell-side · transcripts · clinical →';
   } else if (isActiveQuery) {
     leftLabel = '✦ ASKB is researching...';
@@ -65,7 +65,7 @@ export default function ComponentCard({
     leftLabel = '✓ Added to conversation';
     rightLabel = '';
   } else {
-    leftLabel = '✦ Ask ASKB';
+    leftLabel = '✦ Learn More in ASKB';
     rightLabel = 'Search across BI · sell-side · transcripts · clinical →';
   }
 
@@ -229,7 +229,7 @@ export default function ComponentCard({
           }
         }}
       >
-        {/* Left: ✦ Ask ASKB with pulse on the spark when enabled */}
+        {/* Left: ✦ Learn More in ASKB with pulse on the spark when enabled */}
         <span style={{
           fontSize: 12,
           fontWeight: 600,
