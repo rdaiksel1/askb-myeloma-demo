@@ -205,7 +205,7 @@ function ASKBSynthesisResponse({ label, streamingParts, parts }) {
           ASKB · <em style={{ color: '#6a6a6a' }}>{label}</em>
         </span>
       </div>
-      <div style={{ fontSize: 13, lineHeight: 1.65, color: '#c8c8c8' }}>
+      <div style={{ fontSize: 13, lineHeight: 1.65, color: '#e8e8e8' }}>
         {isDone
           ? <SynthesisResponseParts parts={displayParts} />
           : <ResponseParts parts={displayParts} />
