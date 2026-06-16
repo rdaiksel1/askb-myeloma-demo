@@ -50,6 +50,48 @@ function SectionHeader({ text }) {
   );
 }
 
+// Orange section header for ASKB synthesis responses — matches real ASKB styling
+function SynthesisSectionHeader({ text }) {
+  return (
+    <div style={{
+      color: '#E07B00',
+      fontWeight: 600,
+      fontSize: 12,
+      marginTop: 14,
+      marginBottom: 5,
+      letterSpacing: '0.01em',
+    }}>{text}</div>
+  );
+}
+
+// Parse **bold** markdown into <strong> spans
+function renderBoldText(text) {
+  const segments = text.split(/(\*\*.*?\*\*)/g);
+  return segments.map((seg, i) =>
+    seg.startsWith('**') && seg.endsWith('**')
+      ? <strong key={i} style={{ color: '#e8e8e8', fontWeight: 600 }}>{seg.slice(2, -2)}</strong>
+      : seg
+  );
+}
+
+// Synthesis-specific parts renderer — orange section headers + bold text support
+function SynthesisResponseParts({ parts }) {
+  if (!parts) return null;
+  return (
+    <>
+      {parts.map((part, i) => (
+        <div key={i}>
+          {part.section && <SynthesisSectionHeader text={part.section} />}
+          <div style={{ marginBottom: 8 }}>
+            <span>{renderBoldText(part.text)}</span>
+            {part.chips && part.chips.map((chip, ci) => <SourceChip key={ci} {...chip} />)}
+          </div>
+        </div>
+      ))}
+    </>
+  );
+}
+
 // Q1-specific structured rendering
 function Q1StructuredResponse({ parts }) {
   if (!parts || parts.length === 0) return null;
@@ -151,6 +193,7 @@ function SystemQueryRow({ sourceCount, queryText, done }) {
 
 // ASKB synthesis response bubble triggered from a component card
 function ASKBSynthesisResponse({ label, streamingParts, parts }) {
+  const isDone = !!parts;
   const displayParts = parts || streamingParts;
   if (!displayParts || displayParts.length === 0) return null;
   return (
@@ -160,8 +203,11 @@ function ASKBSynthesisResponse({ label, streamingParts, parts }) {
           ASKB · <em style={{ color: '#6a6a6a' }}>{label}</em>
         </span>
       </div>
-      <div style={{ fontSize: 13, lineHeight: 1.65, color: '#e8e8e8' }}>
-        <ResponseParts parts={displayParts} />
+      <div style={{ fontSize: 13, lineHeight: 1.65, color: '#c8c8c8' }}>
+        {isDone
+          ? <SynthesisResponseParts parts={displayParts} />
+          : <ResponseParts parts={displayParts} />
+        }
       </div>
     </div>
   );
