@@ -17,19 +17,58 @@ const Q3_TEXT = "How does broad 2L bispecific uptake affect CAR-T eligible patie
 
 // Map component ids to their ASKB config and label
 const ASKB_CONFIGS = {
-  market:             { config: ASKB_MARKET_GROWTH,          label: 're: Market Growth Chart',           prompt: "What's driving the spread in 2030 Darzalex estimates, and how does IRA bundling risk factor in?" },
-  rebate:             { config: ASKB_REBATE_SCENARIO,         label: 're: Rebate Scenario Chart',          prompt: "How are sell-side analysts modeling IRA formulation bundling risk for Darzalex Faspro?" },
-  cart:               { config: ASKB_CART_CONSENSUS,          label: 're: Carvykti vs Anito-cel Bridge',   prompt: "Where does sell-side consensus disagree most on CAR-T versus bispecific share by 2030?" },
-  therapyClass:       { config: ASKB_THERAPY_CLASS,           label: 're: Therapy Class Breakdown',        prompt: "How is the CD38 class expected to compress as bispecifics move into earlier treatment lines?" },
-  physicianSurvey:    { config: ASKB_PHYSICIAN_SURVEY,        label: 're: Physician Survey Panel',         prompt: "What are oncologists saying about bispecific adoption and how are they sequencing treatment?" },
-  patientAttrition:   { config: ASKB_PATIENT_ATTRITION,       label: 're: Patient Attrition Funnel',       prompt: "How does earlier bispecific adoption in 2L compress the patient pool available for CAR-T?" },
-  competitiveLandscape: { config: ASKB_COMPETITIVE_LANDSCAPE, label: 're: Competitive Landscape Table',    prompt: "How are analysts differentiating Tecvayli, Talvey, and Elrexfio in their sell-side models?" },
-  catalysts:          { config: ASKB_CATALYSTS,               label: 're: Catalysts Grid',                 prompt: "What upcoming trial readouts and regulatory catalysts could most shift myeloma market dynamics?" },
-  assumptionGrid:     { config: ASKB_ASSUMPTION_GRID,         label: 're: IRA Assumption Grid',            prompt: "Which IRA assumptions are most sensitive in the model and where does the street diverge?" },
-  jjRevenue:          { config: ASKB_JJ_REVENUE,              label: 're: J&J Revenue Waterfall',          prompt: "What's driving the gap between our $14.7B Darzalex 2030 forecast and street consensus?" },
-  patientFunnel:      { config: ASKB_PATIENT_FUNNEL,          label: 're: Patient Funnel Chart',           prompt: "How much does the 3L/4L patient pool compress under different bispecific 2L adoption scenarios?" },
-  bispecificShare:    { config: ASKB_BISPECIFIC_SHARE,        label: 're: Bispecific Share Bars',          prompt: "How is bispecific market share expected to split between Tecvayli, Talvey, and Elrexfio by 2030?" },
-  therapySequencing:  { config: ASKB_THERAPY_SEQUENCING,      label: 're: Therapy Sequencing Map',         prompt: "How are physicians expected to sequence bispecifics and CAR-T across lines of therapy?" },
+  market: {
+    config: ASKB_MARKET_GROWTH, label: 're: Market Growth Chart',
+    prompt: "The global MM drug market chart shows a wide variance in 2030 forecasts. Search BI research, recent sell-side notes, and J&J earnings transcripts to explain what's driving the spread — specifically how analysts are treating IRA Faspro bundling risk, whether the CD38 compression thesis is reflected in consensus, and where the biggest point of disagreement sits between bull and bear cases.",
+  },
+  rebate: {
+    config: ASKB_REBATE_SCENARIO, label: 're: Rebate Scenario Chart',
+    prompt: "Pull sell-side research and CMS policy commentary on IRA formulation bundling risk for Darzalex Faspro. Specifically: what probability are analysts assigning to Faspro entering negotiation in the 2029 cycle vs 2034, how is J&J management framing this risk on earnings calls, and what is the revenue impact range across the bear, base, and bull scenarios modeled on this chart.",
+  },
+  cart: {
+    config: ASKB_CART_CONSENSUS, label: 're: Carvykti vs Anito-cel Bridge',
+    prompt: "The Carvykti vs anito-cel bridge shows a wide range of sell-side 2030 estimates. Search across BI, sell-side equity research, and recent ASCO and ASH abstracts to explain what's driving the consensus gap — including manufacturing capacity assumptions, competitive positioning versus bispecifics in 3L/4L, and how analysts are modeling the anito-cel approval timeline and label.",
+  },
+  therapyClass: {
+    config: ASKB_THERAPY_CLASS, label: 're: Therapy Class Breakdown',
+    prompt: "This chart shows the CD38 class compressing from 55% to ~46% of MM drug sales by 2030 as bispecifics gain share. Pull BI and sell-side research to explain the mechanism — how bispecific 2L adoption pulls patients away from CD38-based retreatment in later lines, which analysts agree with this compression thesis, which ones push back, and what data from TRIMM-3 or MajecTEC-3 could revise these projections.",
+  },
+  physicianSurvey: {
+    config: ASKB_PHYSICIAN_SURVEY, label: 're: Physician Survey Panel',
+    prompt: "Synthesize findings from BI's 100-physician survey alongside sell-side physician channel checks and any KOL commentary from recent hematology conferences. Focus on: how community oncologists are sequencing bispecifics versus CAR-T, what barriers are slowing bispecific adoption in community settings versus academic centers, and whether physician intent data aligns with or diverges from the volume assumptions in current sell-side models.",
+  },
+  patientAttrition: {
+    config: ASKB_PATIENT_ATTRITION, label: 're: Patient Attrition Funnel',
+    prompt: "The patient attrition funnel shows significant drop-off between diagnosis and eligible 3L/4L patients. Search BI research, sell-side models, and real-world data from REMS registries or published claims analyses to explain the drivers of attrition at each stage — including comorbidity exclusions, early mortality, and the growing proportion of patients exhausting treatment options before reaching CAR-T eligibility. How does earlier bispecific use in 2L affect this funnel?",
+  },
+  competitiveLandscape: {
+    config: ASKB_COMPETITIVE_LANDSCAPE, label: 're: Competitive Landscape Table',
+    prompt: "Pull BI competitive analysis and sell-side research covering Tecvayli, Talvey, and Elrexfio to explain how analysts are differentiating the three bispecifics in their models. Specifically: dosing schedule differences and their impact on community adoption, the MajecTEC-3 combination data and how it shifts Tecvayli's competitive position, and which asset analysts see as most at risk from the anito-cel approval.",
+  },
+  catalysts: {
+    config: ASKB_CATALYSTS, label: 're: Catalysts Grid',
+    prompt: "Search BI, sell-side research, and conference abstracts to surface the most significant upcoming binary events in multiple myeloma — including TRIMM-3 combination readouts, MajecTEC-3 data, the anito-cel FDA review timeline, IRA 2029 negotiation announcements, and any ASCO or ASH presentations expected in the next 18 months. For each catalyst, what is the market-implied probability and what is the BI base case assumption?",
+  },
+  assumptionGrid: {
+    config: ASKB_ASSUMPTION_GRID, label: 're: IRA Assumption Grid',
+    prompt: "The IRA assumption grid maps how each key variable drives the Darzalex 2030 revenue range from $13B to $22B. Pull BI sensitivity analysis, sell-side scenario frameworks, and J&J investor day materials to explain which assumptions are most contested — particularly the Faspro bundling timing, the net price discount quantum under negotiation, and whether the market has fully priced the downside scenario. Where does the street diverge most from BI's base case inputs?",
+  },
+  jjRevenue: {
+    config: ASKB_JJ_REVENUE, label: 're: J&J Revenue Waterfall',
+    prompt: "The J&J revenue waterfall shows BI's $14.7B Darzalex 2030 forecast sitting well below the $26.9B street consensus. Search BI research, sell-side models, and J&J earnings transcripts to explain every contributor to this gap — IRA rebate drag, Faspro cannibalization, bispecific 2L erosion of retreatment demand, and generic exposure post-2032. Which sell-side analysts are closest to BI's view and which are furthest, and what single assumption explains the most variance?",
+  },
+  patientFunnel: {
+    config: ASKB_PATIENT_FUNNEL, label: 're: Patient Funnel Chart',
+    prompt: "This chart models three scenarios for the 3L/4L eligible patient pool through 2032, with the high-uptake scenario showing a 3,000-patient compression by 2030. Pull BI epidemiology modeling, sell-side patient pool analyses, and real-world evidence from REMS data to explain the mechanism — how does 2L bispecific adoption reduce the number of patients reaching CAR-T eligibility, and how sensitive is Carvykti revenue to each 1,000-patient change in the addressable pool?",
+  },
+  bispecificShare: {
+    config: ASKB_BISPECIFIC_SHARE, label: 're: Bispecific Share Bars',
+    prompt: "The bispecific share chart shows Tecvayli at 45%, Talvey at 25%, and Elrexfio at 30% of the 2030 bispecific market. Search BI, sell-side research, and physician surveys to explain the basis for this split — including the GPRC5D vs BCMA target differentiation, dosing schedule advantages, community vs academic center adoption rates, and how this share distribution shifts if MajecTEC-3 combination data is positive or if Elrexfio secures earlier-line approval.",
+  },
+  therapySequencing: {
+    config: ASKB_THERAPY_SEQUENCING, label: 're: Therapy Sequencing Map',
+    prompt: "Pull BI treatment algorithm analysis, sell-side sequencing frameworks, and KOL commentary from ASH and ASCO to explain how physician sequencing of bispecifics versus CAR-T is expected to evolve through 2030. Specifically: under what circumstances do physicians choose bispecific first versus CAR-T first in 3L, how does the off-the-shelf availability of bispecifics affect sequencing in community settings, and what does the TRIMM-3 combination data imply for earlier-line use that would displace current 3L/4L volume assumptions?",
+  },
 };
 
 function flattenToWords(parts) {
@@ -386,18 +425,16 @@ export default function App() {
       setQueriedComponents(prev => new Set([...prev, componentId]));
       setActiveQueryComponents(prev => new Set([...prev, componentId]));
 
-      // Type the prompt into the input box, then send it
-      typeIntoInput(prompt, () => {
-        // Show as user message
-        appendMsg({ type: 'user', text: prompt });
+      // Show the auto-generated prompt as a distinct ASKB prompt message
+      appendMsg({ type: 'askb-prompt', text: prompt, label });
 
-        // Append system-query row
-        appendMsg({
-          type: 'system-query',
-          sourceCount: config.sourceCount,
-          queryText: config.queryText,
-          label,
-        });
+      // Append system-query row
+      appendMsg({
+        type: 'system-query',
+        sourceCount: config.sourceCount,
+        queryText: config.queryText,
+        label,
+      });
 
         // After 1400ms, append synthesis message and stream it
         const synthId = nextId();
@@ -450,9 +487,8 @@ export default function App() {
           };
           setTimeout(tick, 18);
         }, 1400);
-      });
     };
-  }, [queriedComponents, typeIntoInput]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [queriedComponents]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const stepLabels = ['', '1/3', '2/3', '2/3', '2/3', '3/3', '3/3'];
   const stepLabel = stepLabels[demoStep] || '';

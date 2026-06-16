@@ -96,6 +96,37 @@ function ResponseParts({ parts, title }) {
   );
 }
 
+// ASKB auto-generated prompt card — shown when Ask ASKB is clicked on a component
+function ASKBPromptCard({ text, label }) {
+  return (
+    <div style={{ marginBottom: 14 }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 6,
+        marginBottom: 6,
+      }}>
+        <span style={{ color: '#6b9e7e', fontSize: 11, fontWeight: 600 }}>✦ ASKB</span>
+        <span style={{ color: '#444', fontSize: 11 }}>·</span>
+        <span style={{ color: '#555', fontSize: 11 }}>auto-generated query {label}</span>
+      </div>
+      <div style={{
+        background: '#0f1a12',
+        border: '1px solid #1a3020',
+        borderLeft: '3px solid #6b9e7e',
+        borderRadius: 6,
+        padding: '10px 14px',
+        fontSize: 12,
+        color: '#9ac8a8',
+        lineHeight: 1.65,
+        fontStyle: 'italic',
+      }}>
+        {text}
+      </div>
+    </div>
+  );
+}
+
 // System query row — "searching" indicator
 function SystemQueryRow({ sourceCount, queryText, done }) {
   if (done) {
@@ -252,6 +283,10 @@ function Message({ msg, index, messages, streamingMsgId, demoStep, showDiseaseCh
         )}
       </div>
     );
+  }
+
+  if (msg.type === 'askb-prompt') {
+    return <ASKBPromptCard text={msg.text} label={msg.label} />;
   }
 
   if (msg.type === 'system-query') {
