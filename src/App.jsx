@@ -17,19 +17,19 @@ const Q3_TEXT = "How does broad 2L bispecific uptake affect CAR-T eligible patie
 
 // Map component ids to their ASKB config and label
 const ASKB_CONFIGS = {
-  market:             { config: ASKB_MARKET_GROWTH,         label: 're: Market Growth Chart' },
-  rebate:             { config: ASKB_REBATE_SCENARIO,        label: 're: Rebate Scenario Chart' },
-  cart:               { config: ASKB_CART_CONSENSUS,         label: 're: Carvykti vs Anito-cel Bridge' },
-  therapyClass:       { config: ASKB_THERAPY_CLASS,          label: 're: Therapy Class Breakdown' },
-  physicianSurvey:    { config: ASKB_PHYSICIAN_SURVEY,       label: 're: Physician Survey Panel' },
-  patientAttrition:   { config: ASKB_PATIENT_ATTRITION,      label: 're: Patient Attrition Funnel' },
-  competitiveLandscape: { config: ASKB_COMPETITIVE_LANDSCAPE, label: 're: Competitive Landscape Table' },
-  catalysts:          { config: ASKB_CATALYSTS,              label: 're: Catalysts Grid' },
-  assumptionGrid:     { config: ASKB_ASSUMPTION_GRID,        label: 're: IRA Assumption Grid' },
-  jjRevenue:          { config: ASKB_JJ_REVENUE,             label: 're: J&J Revenue Waterfall' },
-  patientFunnel:      { config: ASKB_PATIENT_FUNNEL,         label: 're: Patient Funnel Chart' },
-  bispecificShare:    { config: ASKB_BISPECIFIC_SHARE,       label: 're: Bispecific Share Bars' },
-  therapySequencing:  { config: ASKB_THERAPY_SEQUENCING,     label: 're: Therapy Sequencing Map' },
+  market:             { config: ASKB_MARKET_GROWTH,          label: 're: Market Growth Chart',           prompt: "What's driving the spread in 2030 Darzalex estimates, and how does IRA bundling risk factor in?" },
+  rebate:             { config: ASKB_REBATE_SCENARIO,         label: 're: Rebate Scenario Chart',          prompt: "How are sell-side analysts modeling IRA formulation bundling risk for Darzalex Faspro?" },
+  cart:               { config: ASKB_CART_CONSENSUS,          label: 're: Carvykti vs Anito-cel Bridge',   prompt: "Where does sell-side consensus disagree most on CAR-T versus bispecific share by 2030?" },
+  therapyClass:       { config: ASKB_THERAPY_CLASS,           label: 're: Therapy Class Breakdown',        prompt: "How is the CD38 class expected to compress as bispecifics move into earlier treatment lines?" },
+  physicianSurvey:    { config: ASKB_PHYSICIAN_SURVEY,        label: 're: Physician Survey Panel',         prompt: "What are oncologists saying about bispecific adoption and how are they sequencing treatment?" },
+  patientAttrition:   { config: ASKB_PATIENT_ATTRITION,       label: 're: Patient Attrition Funnel',       prompt: "How does earlier bispecific adoption in 2L compress the patient pool available for CAR-T?" },
+  competitiveLandscape: { config: ASKB_COMPETITIVE_LANDSCAPE, label: 're: Competitive Landscape Table',    prompt: "How are analysts differentiating Tecvayli, Talvey, and Elrexfio in their sell-side models?" },
+  catalysts:          { config: ASKB_CATALYSTS,               label: 're: Catalysts Grid',                 prompt: "What upcoming trial readouts and regulatory catalysts could most shift myeloma market dynamics?" },
+  assumptionGrid:     { config: ASKB_ASSUMPTION_GRID,         label: 're: IRA Assumption Grid',            prompt: "Which IRA assumptions are most sensitive in the model and where does the street diverge?" },
+  jjRevenue:          { config: ASKB_JJ_REVENUE,              label: 're: J&J Revenue Waterfall',          prompt: "What's driving the gap between our $14.7B Darzalex 2030 forecast and street consensus?" },
+  patientFunnel:      { config: ASKB_PATIENT_FUNNEL,          label: 're: Patient Funnel Chart',           prompt: "How much does the 3L/4L patient pool compress under different bispecific 2L adoption scenarios?" },
+  bispecificShare:    { config: ASKB_BISPECIFIC_SHARE,        label: 're: Bispecific Share Bars',          prompt: "How is bispecific market share expected to split between Tecvayli, Talvey, and Elrexfio by 2030?" },
+  therapySequencing:  { config: ASKB_THERAPY_SEQUENCING,      label: 're: Therapy Sequencing Map',         prompt: "How are physicians expected to sequence bispecifics and CAR-T across lines of therapy?" },
 };
 
 function flattenToWords(parts) {
@@ -380,77 +380,79 @@ export default function App() {
   const makeAskASKBHandler = useCallback((componentId) => {
     return () => {
       if (queriedComponents.has(componentId)) return;
-      const { config, label } = ASKB_CONFIGS[componentId];
+      const { config, label, prompt } = ASKB_CONFIGS[componentId];
 
-      // Mark as queried immediately
+      // Mark as queried + activate orange border immediately
       setQueriedComponents(prev => new Set([...prev, componentId]));
-
-      // Activate orange border — cleared when streaming finishes
       setActiveQueryComponents(prev => new Set([...prev, componentId]));
 
-      // Append system-query row
-      appendMsg({
-        type: 'system-query',
-        sourceCount: config.sourceCount,
-        queryText: config.queryText,
-        label,
-      });
+      // Type the prompt into the input box, then send it
+      typeIntoInput(prompt, () => {
+        // Show as user message
+        appendMsg({ type: 'user', text: prompt });
 
-      // After 1400ms, append synthesis message and stream it
-      const synthId = nextId();
-      setTimeout(() => {
-        // Append the synthesis message (blank to start)
-        setMessages(prev => [...prev, {
-          id: synthId,
-          type: 'askb-synthesis',
+        // Append system-query row
+        appendMsg({
+          type: 'system-query',
+          sourceCount: config.sourceCount,
+          queryText: config.queryText,
           label,
-          parts: null,
-          streamingParts: [],
-        }]);
-        // Then stream into it
-        setStreamingMsgId(synthId);
-        const flatParts = flattenToWords(config.parts);
-        let partIdx = 0;
-        let wordIdx = 0;
-        const completedParts = [];
-        const tick = () => {
-          const part = flatParts[partIdx];
-          if (!part) {
-            setMessages(prev => prev.map(m => m.id === synthId
-              ? { ...m, parts: config.parts, streamingParts: null }
-              : m
-            ));
-            setStreamingMsgId(null);
-            setActiveQueryComponents(prev => {
-              const next = new Set(prev);
-              next.delete(componentId);
-              return next;
-            });
-            return;
-          }
-          wordIdx++;
-          if (wordIdx >= part.words.length) {
-            completedParts.push({ text: config.parts[partIdx].text, chips: config.parts[partIdx].chips });
-            setMessages(prev => prev.map(m => m.id === synthId
-              ? { ...m, streamingParts: [...completedParts] }
-              : m
-            ));
-            partIdx++;
-            wordIdx = 0;
-            setTimeout(tick, 18);
-          } else {
-            const currentText = part.words.slice(0, wordIdx).join(' ');
-            setMessages(prev => prev.map(m => m.id === synthId
-              ? { ...m, streamingParts: [...completedParts, { text: currentText, chips: [] }] }
-              : m
-            ));
-            setTimeout(tick, 18);
-          }
-        };
-        setTimeout(tick, 18);
-      }, 1400);
+        });
+
+        // After 1400ms, append synthesis message and stream it
+        const synthId = nextId();
+        setTimeout(() => {
+          setMessages(prev => [...prev, {
+            id: synthId,
+            type: 'askb-synthesis',
+            label,
+            parts: null,
+            streamingParts: [],
+          }]);
+          setStreamingMsgId(synthId);
+          const flatParts = flattenToWords(config.parts);
+          let partIdx = 0;
+          let wordIdx = 0;
+          const completedParts = [];
+          const tick = () => {
+            const part = flatParts[partIdx];
+            if (!part) {
+              setMessages(prev => prev.map(m => m.id === synthId
+                ? { ...m, parts: config.parts, streamingParts: null }
+                : m
+              ));
+              setStreamingMsgId(null);
+              setActiveQueryComponents(prev => {
+                const next = new Set(prev);
+                next.delete(componentId);
+                return next;
+              });
+              return;
+            }
+            wordIdx++;
+            if (wordIdx >= part.words.length) {
+              completedParts.push({ text: config.parts[partIdx].text, chips: config.parts[partIdx].chips });
+              setMessages(prev => prev.map(m => m.id === synthId
+                ? { ...m, streamingParts: [...completedParts] }
+                : m
+              ));
+              partIdx++;
+              wordIdx = 0;
+              setTimeout(tick, 18);
+            } else {
+              const currentText = part.words.slice(0, wordIdx).join(' ');
+              setMessages(prev => prev.map(m => m.id === synthId
+                ? { ...m, streamingParts: [...completedParts, { text: currentText, chips: [] }] }
+                : m
+              ));
+              setTimeout(tick, 18);
+            }
+          };
+          setTimeout(tick, 18);
+        }, 1400);
+      });
     };
-  }, [queriedComponents]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [queriedComponents, typeIntoInput]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const stepLabels = ['', '1/3', '2/3', '2/3', '2/3', '3/3', '3/3'];
   const stepLabel = stepLabels[demoStep] || '';
