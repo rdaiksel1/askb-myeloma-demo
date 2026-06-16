@@ -100,7 +100,7 @@ function Q1StructuredResponse({ parts }) {
       <ResponseHeader title="Multiple Myeloma Drug Market · 2030 Outlook" />
       {parts.map((part, i) => (
         <div key={i}>
-          {part.section && <SectionHeader text={part.section} />}
+          {part.section && <SynthesisSectionHeader text={part.section} />}
           <div style={{ marginBottom: 6 }}>
             <span>{part.text}</span>
             {part.chips && part.chips.map((chip, ci) => <SourceChip key={ci} {...chip} />)}
@@ -118,6 +118,7 @@ function ResponseParts({ parts, title }) {
       <>
         {parts.map((part, i) => (
           <div key={i} style={{ marginBottom: 4 }}>
+            {part.section && <SynthesisSectionHeader text={part.section} />}
             <span>{part.text}</span>
             {part.chips && part.chips.map((chip, ci) => <SourceChip key={ci} {...chip} />)}
           </div>
@@ -130,6 +131,7 @@ function ResponseParts({ parts, title }) {
       <ResponseHeader title={title} />
       {parts.map((part, i) => (
         <div key={i} style={{ marginBottom: 4 }}>
+          {part.section && <SynthesisSectionHeader text={part.section} />}
           <span>{part.text}</span>
           {part.chips && part.chips.map((chip, ci) => <SourceChip key={ci} {...chip} />)}
         </div>
