@@ -84,6 +84,7 @@ export const ASKB_MARKET_GROWTH = {
   queryText: '"MM market forecast · IRA impact · BI vs consensus divergence"',
   parts: [
     {
+      section: "BI vs Consensus Gap",
       text: "BI's $33B 2030 forecast sits below the $37B street consensus — a gap that has widened over the past 18 months as IRA negotiation timelines have come into focus.",
       chips: [
         { analyst: "Tim Anderson", firm: "Wolfe Research", showDot: true, dotColor: GREEN },
@@ -96,6 +97,7 @@ export const ASKB_MARKET_GROWTH = {
       ],
     },
     {
+      section: "Where the Street Disagrees",
       text: "Morgan Stanley's Terence Flynn revised his 2030 Darzalex estimate down 8% in March following the HHS announcement on formulation bundling precedent — his $15.9B estimate remains above our $14.7B base case.",
       chips: [
         { analyst: "Terence Flynn", firm: "Morgan Stanley", showDot: true, dotColor: GREEN },
@@ -108,6 +110,7 @@ export const ASKB_MARKET_GROWTH = {
       ],
     },
     {
+      section: "IRA Precedent",
       text: "A recent NEJM analysis of Medicare Part B reimbursement patterns found SC oncology formulations have faced bundled negotiation in 3 of the last 4 IRA cycles, lending empirical support to BI's bear-case timing assumption.",
       chips: [
         { analyst: "NEJM Medicare Part B Analysis", firm: "", showDot: false },
@@ -121,6 +124,7 @@ export const ASKB_REBATE_SCENARIO = {
   queryText: '"Darzalex IRA · Faspro rebate exposure · HHS formulation precedent"',
   parts: [
     {
+      section: "The Core Legal Question",
       text: "The central question is whether HHS treats Darzalex Faspro as a distinct drug from IV Darzalex for IRA negotiation purposes. J&J's position — stated at its 2024 Investor Day — is that Faspro is a separate formulation with its own exclusivity period running to 2036.",
       chips: [
         { analyst: "J&J Investor Day 2024", firm: "", showDot: false },
@@ -133,12 +137,14 @@ export const ASKB_REBATE_SCENARIO = {
       ],
     },
     {
+      section: "Sell-Side Probability Estimates",
       text: "Tim Anderson at Wolfe flagged this precedent in a February note, estimating a 40% probability of bundled 2029 negotiation — the bear case BI also treats as plausible.",
       chips: [
         { analyst: "Tim Anderson", firm: "Wolfe Research", showDot: true, dotColor: GREEN },
       ],
     },
     {
+      section: "BI's Base Case",
       text: "BI's base case models a 25-point rebate increase from 2029, taking effective rebate from ~20% to ~45% — consistent with IRA-negotiated levels seen on Eliquis and Jardiance.",
       chips: [
         { analyst: "Sam Fazeli", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN },
@@ -164,6 +170,7 @@ export const ASKB_CART_CONSENSUS = {
   queryText: '"BCMA CAR-T · Carvykti vs anito-cel · bispecific compression · 2L uptake impact"',
   parts: [
     {
+      section: "The Consensus Gap Explained",
       text: "The consensus bridge on Carvykti reflects a structural disagreement about how much of the late-line patient pool survives broad 2L bispecific adoption. BI's model shows a 25% reduction in treatment-eligible 3L/4L patients by 2030 under the base Tecvayli scenario — a compression that flows directly into Carvykti's addressable market.",
       chips: [
         { analyst: "Max Nisen", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN },
@@ -182,6 +189,7 @@ export const ASKB_CART_CONSENSUS = {
       ],
     },
     {
+      section: "Anito-cel Differentiation",
       text: "Anito-cel's differentiation case rests on its safety profile from the CARTITUDE-6 comparison data — lower rates of Grade 3+ CRS and ICANS than Carvykti in matched cohort analysis.",
       chips: [
         { analyst: "CARTITUDE-6", firm: "NEJM 2025", showDot: false },
@@ -194,6 +202,7 @@ export const ASKB_CART_CONSENSUS = {
       ],
     },
     {
+      section: "BI's High-Conviction Call",
       text: "BI's $3.1B anito-cel estimate — $100M above consensus — reflects this safety-driven community uptake assumption, which is the single highest-conviction differentiation call in BI's myeloma model.",
       chips: [
         { analyst: "Aude Gerspacher", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN },
@@ -209,6 +218,7 @@ export const ASKB_THERAPY_CLASS = {
   queryText: '"MM therapy class dynamics · CD38 vs CAR-T vs bispecific · 2030 mix shift"',
   parts: [
     {
+      section: "Class-Level Mix Shift",
       text: "CD38 antibodies will remain the dominant therapy class through 2030, but their share is structurally declining as CAR-T and bispecifics capture more of the second and third-line market. Darzalex accounts for over 95% of the CD38 class today.",
       chips: [{ analyst: "Sam Fazeli", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }],
     },
@@ -217,10 +227,12 @@ export const ASKB_THERAPY_CLASS = {
       chips: [{ analyst: "Terence Flynn", firm: "Morgan Stanley", showDot: true, dotColor: GREEN }],
     },
     {
+      section: "CAR-T Outlook",
       text: "CAR-T's 22% share by 2030 assumes Carvykti and anito-cel together reach approximately $5.4B — a figure that is highly sensitive to the bispecific 2L penetration rate, which BI models more conservatively than consensus.",
       chips: [{ analyst: "Max Nisen", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }],
     },
     {
+      section: "Small Molecule Erosion",
       text: "The small molecule erosion story is essentially complete by 2026 — Revlimid generic entry has already compressed BMS's franchise from $12B peak to under $200M, freeing up formulary and payer budget that flows directly to the newer immunotherapy classes.",
       chips: [{ analyst: "Tim Anderson", firm: "Wolfe Research", showDot: true, dotColor: GREEN }],
     },
@@ -236,6 +248,7 @@ export const ASKB_PHYSICIAN_SURVEY = {
   queryText: '"MM physician survey · Darzalex front-line adoption · 2L CAR-T vs bispecific preference"',
   parts: [
     {
+      section: "Front-Line Adoption",
       text: "BI's quarterly survey of 100 hematologists is one of the most granular real-world reads on myeloma practice patterns available. The 66% quadruplet adoption rate for transplant-eligible patients in April 2026 is a significant jump from 55% a year prior — driven by the Faspro-based quadruplet approval and improved tolerability data.",
       chips: [{ analyst: "Sam Fazeli", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }],
     },
@@ -244,10 +257,12 @@ export const ASKB_PHYSICIAN_SURVEY = {
       chips: [{ analyst: "Chris Schott", firm: "JPMorgan", showDot: true, dotColor: RED }],
     },
     {
+      section: "2L Sequencing Preference",
       text: "The 2L preference split — 60% CAR-T, 18% Tecvayli plus Darzalex — is more CAR-T-forward than the street anticipated following MajecTEC-3. BI interprets this as physicians prioritizing depth of response over convenience at first relapse in fit patients.",
       chips: [{ analyst: "Aude Gerspacher", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }],
     },
     {
+      section: "T-Cell Exhaustion Concern",
       text: "The 23% of academic centers refusing the Tecvayli plus Darzalex combination reflects concerns about T-cell exhaustion compromising subsequent CAR-T efficacy — a mechanistic concern that has appeared in three ASCO 2026 abstracts.",
       chips: [{ analyst: "ASCO 2026 T-cell Exhaustion Data", firm: "", showDot: false }],
     },
@@ -351,18 +366,22 @@ export const ASKB_CATALYSTS = {
   queryText: '"MM key catalysts 2026-2030 · IRA decision · Tecvayli 2L · anito-cel approval · arlo-cel data"',
   parts: [
     {
+      section: "Highest-Magnitude Binary",
       text: "The IRA Faspro decision is the highest-magnitude binary event in the myeloma space — J&J's management has consistently guided investors toward the 2034 standalone eligibility timeline, but HHS precedent on SC formulations has moved against that position over the past 18 months.",
       chips: [{ analyst: "J&J Investor Day 2024", firm: "", showDot: false }],
     },
     {
+      section: "Tecvayli Commercial Ramp",
       text: "The Tecvayli 2L approval — confirmed by MajecTEC-3's 83% PFS reduction — is already a fait accompli, but its commercial ramp in 2L is the real catalyst to watch. Wells Fargo's Mohit Bansal estimates Tecvayli 2L adoption reaches 25% market share by end of 2027 under his base case, with upside to 35% if payer coverage aligns by mid-2027.",
       chips: [{ analyst: "Mohit Bansal", firm: "Wells Fargo", showDot: true, dotColor: GREEN }],
     },
     {
+      section: "Anito-cel Label Breadth",
       text: "Anito-cel's December 2026 PDUFA date is the next binary event — approval is widely expected, but the label breadth matters. An earlier-line label (3L versus 4L) would be a material upside versus BI's model, which assumes a 3L-plus initial indication.",
       chips: [{ analyst: "Terence Flynn", firm: "Morgan Stanley", showDot: true, dotColor: GREEN }],
     },
     {
+      section: "Least-Modeled Catalyst",
       text: "Arlo-cel is the least-modeled catalyst on the list — a GPRC5D-targeting CAR-T with a post-BCMA retreatment positioning that creates a niche not captured in most competitive models. ASCO 2026 data showed a 71% ORR in heavily pretreated patients.",
       chips: [{ analyst: "Arlo-cel ASCO 2026 Data", firm: "", showDot: false }],
     },
@@ -374,6 +393,7 @@ export const ASKB_ASSUMPTION_GRID = {
   queryText: '"IRA model assumptions · Faspro rebate scenario · HHS negotiation methodology"',
   parts: [
     {
+      section: "Rebate Depth Assumption",
       text: "The 45% effective rebate assumption in BI's IRA scenario is grounded in the observed central tendency of HHS's first two negotiation cycles — Eliquis moved from 15% to 41% effective rebate, Jardiance from 18% to 47%. Faspro's profile — dominant market share, high Medicare penetration, no therapeutic alternative — maps closely to both precedents.",
       chips: [{ analyst: "HHS IRA Negotiation Framework", firm: "", showDot: false }],
     },
@@ -382,10 +402,12 @@ export const ASKB_ASSUMPTION_GRID = {
       chips: [{ analyst: "CMS Medicare Part B Data · 2024", firm: "", showDot: false }],
     },
     {
+      section: "Bundling Timing Probability",
       text: "Tim Anderson at Wolfe has done the most granular public analysis of the IRA bundling question, estimating a 40% probability of Faspro being bundled with IV Darzalex in the 2029 cycle rather than treated as a separate negotiation in 2034. BI treats this as its base case, not a bear case.",
       chips: [{ analyst: "Tim Anderson", firm: "Wolfe Research", showDot: true, dotColor: GREEN }],
     },
     {
+      section: "Single-Variable Sensitivity",
       text: "The $1.8B 2030 sales difference between baseline and IRA scenario flows almost entirely from the rebate line — all other assumptions are held constant. This makes the model's output unusually sensitive to a single regulatory decision, which is why BI flags it as the primary risk to its J&J revenue forecast.",
       chips: [{ analyst: "Sam Fazeli", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }],
     },
@@ -397,6 +419,7 @@ export const ASKB_JJ_REVENUE = {
   queryText: '"J&J myeloma revenue 2023-2030 · Darzalex growth drivers · IRA waterfall impact"',
   parts: [
     {
+      section: "Franchise Overview",
       text: "J&J's myeloma franchise is the most valuable oncology asset in the industry by revenue — $10.9B in 2023, growing to $14.9B by 2030 in BI's model despite the IRA headwind. The franchise's breadth across four distinct mechanisms (CD38, CAR-T, bispecific, GPRC5D) is what makes it uniquely resilient to class-level disruption.",
       chips: [{ analyst: "Sam Fazeli", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }],
     },
@@ -405,10 +428,12 @@ export const ASKB_JJ_REVENUE = {
       chips: [{ analyst: "J&J Q4 2024 Earnings", firm: "", showDot: false }],
     },
     {
+      section: "IRA as Primary Headwind",
       text: "The $2.0B IRA rebate drag is the single largest negative contributor in the waterfall — larger than generic erosion, larger than competitive pressure from bispecifics. Morgan Stanley's David Risinger excludes this drag entirely from his model, which explains most of the $12B gap between our $14.9B forecast and the $26.9B street consensus.",
       chips: [{ analyst: "David Risinger", firm: "Morgan Stanley", showDot: true, dotColor: RED }],
     },
     {
+      section: "Street Positioning",
       text: "BMO's Evan Seigerman sits between BI and consensus at $19.4B, applying a partial IRA discount but assuming Faspro standalone eligibility in 2034. The range of sell-side estimates — from BI's $14.9B to the high end of $28B+ — reflects genuine model uncertainty on the IRA question, not just forecast imprecision.",
       chips: [{ analyst: "Evan Seigerman", firm: "BMO Capital Markets", showDot: true, dotColor: RED }],
     },
@@ -420,10 +445,12 @@ export const ASKB_PATIENT_FUNNEL = {
   queryText: '"3L/4L patient pool · bispecific compression scenario · epidemiology model 2024-2032"',
   parts: [
     {
+      section: "BI's Epidemiology Call",
       text: "The patient funnel compression scenario is BI's most differentiated epidemiology call in the myeloma space — a 25% reduction in treatment-eligible 3L/4L patients by 2030 under broad 2L bispecific adoption. This is not a marginal adjustment; it restructures the late-line competitive landscape permanently.",
       chips: [{ analyst: "Max Nisen", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }],
     },
     {
+      section: "The Key Model Parameter",
       text: "The 35% 2L Tecvayli share threshold is the key model parameter — below it, late-line pool compression is manageable; above it, the funnel shifts in a way that no CAR-T ramp can compensate for by 2032. BI's base case sits at 28% by 2028, close enough to the threshold that the bear case is plausible.",
       chips: [{ analyst: "Bethan Swift", firm: "Bloomberg Intelligence", showDot: true, dotColor: RED }],
     },
@@ -432,6 +459,7 @@ export const ASKB_PATIENT_FUNNEL = {
       chips: [{ analyst: "MajecTEC-3 · ASCO 2026", firm: "", showDot: false }],
     },
     {
+      section: "Bear Case Pushback",
       text: "JPMorgan's Chris Schott has argued the compression scenario is too aggressive because it assumes bispecific 2L use is additive to the existing patient population — in practice, some patients who receive 2L bispecifics will have longer remissions and eventually become eligible for 3L CAR-T. BI's model accounts for this delay but not full recovery.",
       chips: [{ analyst: "Chris Schott", firm: "JPMorgan", showDot: true, dotColor: RED }],
     },
@@ -443,10 +471,12 @@ export const ASKB_BISPECIFIC_SHARE = {
   queryText: '"Bispecific antibody market share · Tecvayli vs Elrexfio vs Lynozyfic · physician preference"',
   parts: [
     {
+      section: "Tecvayli's Market Position",
       text: "Tecvayli's 55% physician preference among bispecifics reflects both its two-year first-mover advantage and its 2L approval — it is now the only bispecific with a randomized trial showing superiority to standard of care in second line. That combination of data and label breadth is difficult for Elrexfio or Lynozyfic to replicate quickly.",
       chips: [{ analyst: "Aude Gerspacher", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }],
     },
     {
+      section: "Elrexfio Differentiation",
       text: "Elrexfio's 30% share reflects Pfizer's flexible dosing schedule as the primary differentiator — physicians treating community patients with transportation constraints specifically cite the option of monthly dosing after initial cycles. Wells Fargo's Mohit Bansal has the most bullish Elrexfio estimate on the street at $2.1B for 2030, above our class allocation.",
       chips: [{ analyst: "Mohit Bansal", firm: "Wells Fargo", showDot: true, dotColor: GREEN }],
     },
@@ -455,6 +485,7 @@ export const ASKB_BISPECIFIC_SHARE = {
       chips: [{ analyst: "Tim Anderson", firm: "Wolfe Research", showDot: true, dotColor: GREEN }],
     },
     {
+      section: "Sequencing Implications",
       text: "The 65% of physicians preferring CAR-T before bispecifics is a sequencing preference with major commercial consequences — it means bispecifics are largely a post-CAR-T or CAR-T-ineligible market today, even as the 2L approval begins to shift that calculus for fit patients.",
       chips: [{ analyst: "Sam Fazeli", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }],
     },
@@ -466,6 +497,7 @@ export const ASKB_THERAPY_SEQUENCING = {
   queryText: '"MM therapy sequencing · treatment pathway 2026 · post-BCMA options · GPRC5D rationale"',
   parts: [
     {
+      section: "2026 Treatment Landscape",
       text: "The therapy sequencing landscape in 2026 is more complex than at any prior point in myeloma history — four distinct mechanisms across four lines of therapy, with physician preference bifurcating between academic centers (more aggressive early CAR-T) and community practice (more sequential CD38-based approaches).",
       chips: [{ analyst: "Sam Fazeli", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }],
     },
@@ -474,6 +506,7 @@ export const ASKB_THERAPY_SEQUENCING = {
       chips: [{ analyst: "ASCO 2026 NDMM Data", firm: "", showDot: false }],
     },
     {
+      section: "Post-BCMA Sequencing",
       text: "Post-BCMA sequencing — after CAR-T or bispecific failure — is where Talvey's GPRC5D targeting becomes commercially relevant. The 41% physician preference for Talvey after CAR-T reflects a genuine unmet need: BCMA-targeting is exhausted at that point, and GPRC5D offers a distinct mechanism with a 73% ORR in the MonumenTAL-1 trial.",
       chips: [{ analyst: "MonumenTAL-1 · NEJM 2024", firm: "", showDot: false }],
     },
@@ -482,6 +515,7 @@ export const ASKB_THERAPY_SEQUENCING = {
       chips: [{ analyst: "Terence Flynn", firm: "Morgan Stanley", showDot: true, dotColor: GREEN }],
     },
     {
+      section: "Community vs. Academic Split",
       text: "The community/academic split at 4L — 39% CAR-T preference in community versus essentially 0% in practice due to logistics — captures the gap between physician intent and commercial reality that BI's model tries to explicitly bridge.",
       chips: [{ analyst: "Bethan Swift", firm: "Bloomberg Intelligence", showDot: true, dotColor: RED }],
     },
