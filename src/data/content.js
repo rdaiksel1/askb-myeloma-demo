@@ -259,55 +259,128 @@ export const ASKB_PHYSICIAN_SURVEY = {
 };
 
 export const ASKB_PATIENT_ATTRITION = {
-  sourceCount: 10,
-  queryText: '"MM patient attrition · line of therapy progression · logistics cost barriers"',
+  sourceCount: 34,
+  queryText: '"MM patient attrition · line of therapy progression · bispecific pull-forward · CAR-T eligibility compression"',
   parts: [
     {
-      text: "The steep attrition between lines — only 52% of newly diagnosed patients reaching 2L, and 20% of those reaching 4L — is the structural constraint on late-line CAR-T and bispecific markets that consensus models routinely underestimate.",
-      chips: [{ analyst: "Max Nisen", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }],
+      section: "The Attrition Funnel: Quantified",
+      text: "Structural attrition in MM is severe and well-documented. ~36,000 new US cases are diagnosed annually, but the addressable late-line pool is a fraction of that: 51% of US NDMM patients are ineligible for autologous stem cell transplant due to comorbidities. Non-transplant attrition to 2L runs ~57.7%; transplant-eligible patients face ~21% attrition before reaching 2L. Only 52% of 2L patients progress to 3L, and of those, only 39% advance to 4L — meaning roughly 20% of 2L patients ever reach the line where CAR-T has historically been deployed. Approximately 16,000 US patients start 4L+ therapy annually.",
+      chips: [
+        { analyst: "Bethan Swift", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN },
+        { analyst: "Charles Butler", firm: "Roth Capital Partners", showDot: true, dotColor: RED },
+      ],
     },
     {
-      text: "Symphony Health Solutions claims data through Q1 2026 shows the logistics barrier at 2L-to-3L transition is worsening, not improving — median time from 2L progression to 3L treatment initiation has increased from 4.2 months in 2022 to 5.8 months in 2025, driven by CAR-T manufacturing lead times at community centers.",
-      chips: [{ analyst: "Symphony Health Solutions · Q1 2026", firm: "", showDot: false }],
+      section: "Stage-by-Stage Drivers",
+      text: "Diagnosis to 2L: Comorbidities — hepatorenal dysfunction, peripheral neuropathy, diabetes mellitus, poor ECOG performance status — are as determinative as age in excluding patients from intensive regimens. The majority of patients now enter 1L on daratumumab-based quadruplets (Dara-VRd), meaning nearly all 2L patients are already CD38-refractory, constraining downstream regimen options.",
+      chips: [
+        { analyst: "Third Bridge · Expert Network", firm: "", showDot: false },
+        { analyst: "Cindy Wu", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN },
+      ],
     },
     {
-      text: "The cost barrier at 3L-to-4L is equally significant — payer prior authorization denial rates for CAR-T in 4th line run at approximately 34% for Medicare Advantage plans, per CMS claims data.",
-      chips: [{ analyst: "CMS Medicare Claims Data · 2025", firm: "", showDot: false }],
+      text: "1L to 2L — Early Mortality and Relapse Dynamics: ~16% of patients relapse within 12 months of starting therapy; ~50% relapse after approximately two years. Fatal adverse reactions within 30 days of last treatment were observed in 6–9% of patients in pivotal trials (BOSTON/STORM). The five-year survival rate is approximately 50%, and patients surviving to later lines are progressively frailer due to cumulative disease burden and treatment toxicity.",
+      chips: [
+        { analyst: "Etzer Darout", firm: "Barclays", showDot: true, dotColor: RED },
+      ],
     },
     {
-      text: "BMO's Evan Seigerman has argued the attrition funnel is actually a bullish signal for bispecifics — their off-the-shelf availability removes the manufacturing wait that blocks CAR-T access, meaning bispecific penetration in 3L and 4L may outpace CAR-T faster than our models assume.",
-      chips: [{ analyst: "Evan Seigerman", firm: "BMO Capital Markets", showDot: true, dotColor: RED }],
+      text: "2L to 3L — Access Barriers Compounding Clinical Attrition: The 48% attrition between 2L and 3L reflects early mortality, disease progression outpacing treatment timelines, tolerability failures, and logistical barriers. Treatment discontinuation due to adverse reactions runs 19–27% in pivotal trials. CAR-T manufacturing lead times, geographic access constraints, insurance approvals, and REMS logistics prevent many technically eligible patients from receiving therapy — only ~25% of technically eligible patients actually receive autologous CAR-T, per Roche's Pharma Day 2025 disclosure.",
+      chips: [
+        { analyst: "Sami Corwin", firm: "William Blair", showDot: true, dotColor: RED },
+      ],
     },
     {
-      text: "BI's counter is that bispecific convenience advantages are already captured in the 34% bispecific share at 4L — the remaining 39% CAR-T share in 4L reflects patients who were enrolled in manufacturer logistics programs or treated at academic centers with in-house manufacturing.",
-      chips: [{ analyst: "Bethan Swift", firm: "Bloomberg Intelligence", showDot: true, dotColor: RED }],
+      text: "3L to 4L — Triple-Class Refractoriness: After 3–4 lines, drug resistance, comorbidity accumulation, and poor tolerability severely limit remaining options. Roth Capital estimates only 13% of transplant patients and 35% of non-transplant patients with symptomatic myeloma progress to 4L. Most patients do not reach 5L — attrition is driven by infections, severe disease, and treatment-related mortality.",
+      chips: [
+        { analyst: "Charles Butler", firm: "Roth Capital Partners", showDot: true, dotColor: RED },
+      ],
+    },
+    {
+      section: "The Bispecific Pull-Forward Problem",
+      text: "Earlier 2L bispecific use introduces compounding structural risk across three mechanisms. First, T-cell exhaustion: bispecifics deplete and exhaust T cells with each dose, impairing fitness of cells available for CAR-T manufacturing — 65% of physicians surveyed prefer a CAR-T-first approach specifically due to this concern. Patients exposed to bispecifics before BCMA CAR-T show significantly decreased CAR-T response rates, and over 80% of respondents indicate a non-BCMA washout line is necessary before rechallenging with the same target.",
+      chips: [
+        { analyst: "Cindy Wu", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN },
+        { analyst: "Tyler Van Buren", firm: "TD Cowen", showDot: true, dotColor: GREEN },
+      ],
+    },
+    {
+      text: "Second, antigen loss and target resistance: prior BCMA-directed therapy causes loss of BCMA downregulation on myeloma cells, directly reducing the binding efficacy of subsequent BCMA-targeted agents including CAR-T. Notably, 57% of patients who relapsed on prior anti-BCMA bispecifics still responded to Carvykti — suggesting partial but not complete cross-resistance.",
+      chips: [
+        { analyst: "Leslie Yang", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN },
+        { analyst: "GLG Expert Content · April 2026", firm: "", showDot: false },
+      ],
+    },
+    {
+      text: "Third, market compression: earlier use of T-cell engagers in RRMM could reduce the pool of treatment-eligible late-line US patients by up to 40% by 2030, compressing the downstream late-line market beginning around 2027. Currently only 5% of 2L MM patients utilize bispecifics — but this share is rising, and MajesTEC-3 (Tec-Dara vs. DPd/DVd in 1–3 prior lines) is accelerating physician willingness to deploy them earlier. BCMA bispecifics are unlikely to displace CAR-T in 2L at academic centers but may see meaningful uptake in community settings where CAR-T infrastructure is limited.",
+      chips: [
+        { analyst: "Bethan Swift", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN },
+        { analyst: "Seamus Fernandez", firm: "Guggenheim", showDot: true, dotColor: RED },
+      ],
+    },
+    {
+      section: "Key Structural Takeaways",
+      text: "The funnel is narrow by design: structural attrition means only ~20% of 2L patients reach 4L — the historical CAR-T sweet spot — before any sequencing debates. The 40% late-line pool compression by 2030 is the most consequential sell-side modeling assumption for CAR-T revenue forecasts, implying the addressable US late-line patient base could fall from ~16,000 to roughly 9,600–10,000 annually. Community vs. academic divergence will likely determine sequencing outcomes — community physicians, lacking CAR-T infrastructure, will default to bispecifics earlier, accelerating the attrition dynamic disproportionately in that setting.",
+      chips: [
+        { analyst: "Sam Fazeli", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN },
+        { analyst: "GLG Expert Content · April 2026", firm: "", showDot: false },
+      ],
     },
   ],
 };
 
 export const ASKB_COMPETITIVE_LANDSCAPE = {
-  sourceCount: 18,
-  queryText: '"MM competitive landscape · drug-level 2030 forecasts · BI vs consensus divergence"',
+  sourceCount: 46,
+  queryText: '"bispecific differentiation · Tecvayli vs Elrexfio vs Talvey · MajesTEC-3 · anito-cel risk · community adoption"',
   parts: [
     {
-      text: "The most significant BI-versus-consensus divergence in the table is Abecma — BI at $0.8B versus consensus $1.2B, a 33% gap. BI's view is that Abecma trails peers on both efficacy and safety in matched cohort comparisons, and its REMS requirements create community access friction that the consensus model doesn't adequately penalize.",
-      chips: [{ analyst: "Max Nisen", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }],
+      section: "Market Position Snapshot",
+      text: "Tecvayli (teclistamab) holds over 55% market share in the late-line BCMA bispecific market, driven by first-to-market status and its March 2026 2L approval via MajesTEC-3. Elrexfio (elranatamab) trails at approximately 30% share, while Lynozyfic (linvoseltamab) has captured ~17% of the US market since its 2025 approval, aided by its fixed dose and flexible dosing schedule. The key differentiating axis for community adoption is CRS burden and hospitalization requirements — not efficacy, which analysts broadly view as equi-efficacious across BCMA bispecifics as monotherapy.",
+      chips: [
+        { analyst: "Cindy Wu", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN },
+        { analyst: "GLG Expert Content · April 2026", firm: "", showDot: false },
+      ],
     },
     {
-      text: "Carvykti's -30% gap to consensus reflects the bispecific compression story — our model shows 25% fewer 3L/4L-eligible patients under the 2L Tecvayli scenario. Morgan Stanley's David Risinger sits at $3.1B for Carvykti 2030, above both our estimate and consensus, on the view that manufacturing capacity expansion is the binding constraint that will be resolved by 2027.",
-      chips: [{ analyst: "David Risinger", firm: "Morgan Stanley", showDot: true, dotColor: RED }],
+      section: "Dosing & Community Adoption",
+      text: "Tecvayli requires ~6 nights of step-up hospitalization — the most burdensome among the three — with a 72% any-grade CRS rate in monotherapy trials. Only 9% of patients remain fully outpatient. Prophylactic tocilizumab (OPTec trial) significantly mitigates CRS without compromising efficacy. More community practices are becoming REMS-certified but often refer patients to academic institutions for step-up dosing. Elrexfio requires ~3 nights (50% fewer) and uses a flat non-weight-based subcutaneous dose — a meaningful practical differentiator cited by community physicians. Despite these advantages, Elrexfio has struggled to gain penetration even when offered at no cost, with teclistamab dominant at a 4:1 ratio at most sites.",
+      chips: [
+        { analyst: "David Risinger", firm: "Leerink Partners", showDot: true, dotColor: RED },
+        { analyst: "Michael Schmidt", firm: "Guggenheim", showDot: true, dotColor: RED },
+        { analyst: "Steven Scala", firm: "TD Cowen", showDot: true, dotColor: RED },
+      ],
     },
     {
-      text: "Anito-cel at +3% above consensus is BI's highest-conviction positive divergence — Gilead's safety profile data from CARTITUDE-6 has not yet been fully incorporated into sell-side models, most of which were last updated before the full dataset was published at NEJM in late 2025.",
-      chips: [{ analyst: "CARTITUDE-6 · NEJM 2025", firm: "", showDot: false }],
+      text: "Talvey targets GPRC5D rather than BCMA — a structurally different competitive position that makes it complementary rather than directly substitutable with the BCMA bispecifics. Off-target GPRC5D toxicities — taste changes, skin/nail/hair toxicity, and ataxia — limit its use as a primary therapy and make it difficult for patients to remain on treatment long-term. BI survey data confirms Talvey's positioning as the preferred therapy after failure of BCMA-targeted treatments, not as a first bispecific choice. The Tecvayli + Talvey combination (RedirecTT-1) showed mPFS of 20.9 months in Phase 1b but is considered very difficult to tolerate in practice.",
+      chips: [
+        { analyst: "Cindy Wu", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN },
+        { analyst: "GLG Expert Content · April 2026", firm: "", showDot: false },
+      ],
     },
     {
-      text: "The three bispecifics — Tecvayli, Elrexfio, Lynozyfic — show no BI dollar estimates because the class is modeled in aggregate, then allocated by share. Tecvayli's leading position reflects first-mover advantage and the 2L approval; the 74% of 2030 sales coming from 2L use is BI's key call on the class.",
-      chips: [{ analyst: "Aude Gerspacher", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN }],
+      section: "MajesTEC-3 and Tecvayli's 2L Repositioning",
+      text: "MajesTEC-3 evaluated Tec-Dara vs. investigator's choice DPd/DVd in 587 RRMM patients with 1–3 prior lines. Results: 83% reduction in progression risk, 54% reduction in death risk vs. SOC; 36-month PFS of 83.4% vs. 29.7%; ORR 89% vs. 75.3%; CR/sCR 81.8% vs. 32.1%; MRD negativity 58.4% vs. 17.1%. FDA approved Tec-Dara for 2L+ RRMM in March 2026, fast-tracked in 55 days. Bullish read: Scotiabank and Leerink see ~30% anticipated penetration in 2L+ post-label expansion. Skeptical read: Stifel flags only ~5% of MajesTEC-3 patients had prior anti-CD38 exposure — a critical limitation given that nearly all US patients now receive daratumumab in 1L. Tec-Dara is the preferred 2L choice for only 18% of physicians surveyed, with 60% still favoring CAR-T for fit patients at first relapse.",
+      chips: [
+        { analyst: "Stephen Willey", firm: "Stifel", showDot: true, dotColor: RED },
+        { analyst: "Daina Graybosch", firm: "Leerink Partners", showDot: true, dotColor: RED },
+        { analyst: "Cindy Wu", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN },
+      ],
     },
     {
-      text: "Revlimid's near-zero 2030 forecast ($0.19B) represents essentially complete US generic erosion — BMS has guided that ex-US royalties and residual brand sales are the only remaining revenue stream, with the US franchise effectively closed by Q3 2026.",
-      chips: [{ analyst: "BMS Q4 2024 Earnings", firm: "", showDot: false }],
+      section: "Which Asset Is Most at Risk from Anito-cel?",
+      text: "Near-universal sell-side agreement: Abecma (ide-cel) is the primary casualty, not the bispecifics. Abecma reported US revenues of $77M in Q3 2024 — a fraction of Carvykti's trajectory. Anito-cel offers 'Carvykti-like efficacy and Abecma-like safety,' directly stranding Abecma's sole remaining differentiator. KarMMa-9, Abecma's sole earlier-line expansion study, was discontinued. TD Cowen projects anito-cel could reach 75% peak CAR-T market share, capturing ~50% of Carvykti's 4L+ share. However, 65% of Carvykti's current usage is in the 2–4L setting where anito-cel's initial label (expected 4L/5L) will not compete directly — providing a near-term buffer. Morgan Stanley flags that anito-cel's 'safer Carvykti' profile makes physicians reluctant to use Carvykti broadly in earlier lines, a structural headwind even before direct label competition.",
+      chips: [
+        { analyst: "Tyler Van Buren", firm: "TD Cowen", showDot: true, dotColor: GREEN },
+        { analyst: "Terence Flynn", firm: "Morgan Stanley", showDot: true, dotColor: GREEN },
+        { analyst: "Daina Graybosch", firm: "Leerink Partners", showDot: true, dotColor: RED },
+      ],
+    },
+    {
+      text: "Among the three bispecifics, Tecvayli monotherapy is most exposed to anito-cel — it occupies the same patient population (post-CAR-T relapse or CAR-T-ineligible) and is viewed as comparable in efficacy to Abecma. Talvey's GPRC5D target provides structural insulation as the preferred post-BCMA-exposure option. Elrexfio's Phase 3 MagnetisMM-32 data in 2L+ (expected 2026) is the key catalyst that could either entrench or erode its position relative to both Tec-Dara and anito-cel. Emerging threat: AbbVie's ABBV-383 requires only one step-up dose with monthly dosing from the start, with a 40% any-grade CRS rate vs. 72% for Tecvayli — a profile analysts believe will resonate strongly with community physicians.",
+      chips: [
+        { analyst: "Sam Fazeli", firm: "Bloomberg Intelligence", showDot: true, dotColor: GREEN },
+        { analyst: "Terence Flynn", firm: "Morgan Stanley", showDot: true, dotColor: GREEN },
+      ],
     },
   ],
 };
