@@ -23,15 +23,19 @@ export default function ComponentCard({
   explainer,
   children,
   // Ask ASKB props
-  askASKBEnabled = false, // new: true for active, false for muted/disabled
-  onAskASKB,      // callback when button clicked
-  hasQueried,     // boolean — disables button after first use
-  isActiveQuery,  // boolean — orange left border while streaming
+  askASKBEnabled = false,
+  onAskASKB,
+  hasQueried,
+  isActiveQuery,
+  // Drive props
+  showDriveActions = false,
 }) {
   const [expanded, setExpanded] = useState(false);
   const [flash, setFlash] = useState(false);
   const [tooltip, setTooltip] = useState(false);
   const [barFlash, setBarFlash] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const [alerted, setAlerted] = useState(false);
 
   function handleMoreClick() {
     setFlash(true);
@@ -105,6 +109,51 @@ export default function ComponentCard({
           <div style={{ fontSize: 12, fontWeight: 600, color: '#e8e8e8' }}>
             {title}
           </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            {showDriveActions && (
+              <>
+                <button
+                  onClick={() => setAlerted(a => !a)}
+                  title={alerted ? 'Alert set' : 'Set alert'}
+                  style={{
+                    background: alerted ? '#0f1a0f' : 'transparent',
+                    border: `1px solid ${alerted ? '#2a4a2a' : '#2a2a2a'}`,
+                    borderRadius: 4,
+                    padding: '3px 7px',
+                    cursor: 'pointer',
+                    color: alerted ? '#4caf82' : '#555',
+                    fontSize: 12,
+                    lineHeight: 1,
+                    transition: 'all 0.15s',
+                    fontFamily: 'inherit',
+                  }}
+                  onMouseEnter={e => { if (!alerted) { e.currentTarget.style.borderColor = '#4caf82'; e.currentTarget.style.color = '#4caf82'; } }}
+                  onMouseLeave={e => { if (!alerted) { e.currentTarget.style.borderColor = '#2a2a2a'; e.currentTarget.style.color = '#555'; } }}
+                >
+                  {alerted ? '🔔' : '🔔'}
+                </button>
+                <button
+                  onClick={() => setSaved(s => !s)}
+                  title={saved ? 'Saved to Drive' : 'Save to Drive'}
+                  style={{
+                    background: saved ? '#0f1a0f' : 'transparent',
+                    border: `1px solid ${saved ? '#2a4a2a' : '#2a2a2a'}`,
+                    borderRadius: 4,
+                    padding: '3px 7px',
+                    cursor: 'pointer',
+                    color: saved ? '#4caf82' : '#555',
+                    fontSize: 12,
+                    lineHeight: 1,
+                    transition: 'all 0.15s',
+                    fontFamily: 'inherit',
+                  }}
+                  onMouseEnter={e => { if (!saved) { e.currentTarget.style.borderColor = '#E07B00'; e.currentTarget.style.color = '#E07B00'; } }}
+                  onMouseLeave={e => { if (!saved) { e.currentTarget.style.borderColor = '#2a2a2a'; e.currentTarget.style.color = '#555'; } }}
+                >
+                  {saved ? '★' : '☆'}
+                </button>
+              </>
+            )}
           <div style={{ position: 'relative' }}>
             <button
               onClick={handleMoreClick}
@@ -149,6 +198,7 @@ export default function ComponentCard({
                 Coming soon
               </div>
             )}
+          </div>
           </div>
         </div>
       )}

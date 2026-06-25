@@ -116,6 +116,7 @@ export default function RightPane({
               onAskASKB={demoStep >= 2 ? onAskASKBMarket : undefined}
               hasQueried={hasQueriedMarket}
               isActiveQuery={activeQueryMarket}
+              showDriveActions
             />
           </Staggered>
           <Staggered index={3}>
@@ -130,6 +131,7 @@ export default function RightPane({
               onAskASKB={onAskASKBPhysicianSurvey}
               hasQueried={hasQueriedPhysicianSurvey}
               isActiveQuery={activeQueryPhysicianSurvey}
+              showDriveActions
             />
           </Staggered>
           <Staggered index={5}>

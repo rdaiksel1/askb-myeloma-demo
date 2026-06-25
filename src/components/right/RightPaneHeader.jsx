@@ -1,4 +1,7 @@
+import { useState } from 'react';
+
 export default function RightPaneHeader({ surfacedByASKB }) {
+  const [saved, setSaved] = useState(false);
   return (
     <div style={{
       background: '#1a1a1a',
@@ -95,27 +98,51 @@ export default function RightPaneHeader({ surfacedByASKB }) {
         </div>
       </div>
 
-      {/* Right: surfaced pill */}
-      <div style={{
-        background: surfacedByASKB ? '#2a1a00' : '#1e1e1e',
-        border: `1px solid ${surfacedByASKB ? '#E07B00' : '#2e2e2e'}`,
-        borderRadius: 20,
-        padding: '4px 12px',
-        fontSize: 11,
-        color: surfacedByASKB ? '#E07B00' : '#8a8a8a',
-        display: 'flex',
-        alignItems: 'center',
-        gap: 5,
-        whiteSpace: 'nowrap',
-        flexShrink: 0,
-        marginTop: 4,
-      }}>
-        <span style={{
-          width: 6, height: 6, borderRadius: '50%',
-          background: surfacedByASKB ? '#E07B00' : '#8a8a8a',
-          display: 'inline-block',
-        }} />
-        {surfacedByASKB ? 'Surfaced by ASKB' : 'Opened by user'}
+      {/* Right: surfaced pill + Save to Drive */}
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8, flexShrink: 0 }}>
+        <div style={{
+          background: surfacedByASKB ? '#2a1a00' : '#1e1e1e',
+          border: `1px solid ${surfacedByASKB ? '#E07B00' : '#2e2e2e'}`,
+          borderRadius: 20,
+          padding: '4px 12px',
+          fontSize: 11,
+          color: surfacedByASKB ? '#E07B00' : '#8a8a8a',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 5,
+          whiteSpace: 'nowrap',
+        }}>
+          <span style={{
+            width: 6, height: 6, borderRadius: '50%',
+            background: surfacedByASKB ? '#E07B00' : '#8a8a8a',
+            display: 'inline-block',
+          }} />
+          {surfacedByASKB ? 'Surfaced by ASKB' : 'Opened by user'}
+        </div>
+
+        <button
+          onClick={() => setSaved(true)}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+            background: saved ? '#0f1a0f' : '#111111',
+            border: `1px solid ${saved ? '#2a4a2a' : '#2e2e2e'}`,
+            borderRadius: 6,
+            padding: '5px 11px',
+            fontSize: 11,
+            color: saved ? '#4caf82' : '#8a8a8a',
+            cursor: saved ? 'default' : 'pointer',
+            fontFamily: 'inherit',
+            whiteSpace: 'nowrap',
+            transition: 'all 0.2s ease',
+          }}
+          onMouseEnter={e => { if (!saved) { e.currentTarget.style.borderColor = '#E07B00'; e.currentTarget.style.color = '#E07B00'; } }}
+          onMouseLeave={e => { if (!saved) { e.currentTarget.style.borderColor = '#2e2e2e'; e.currentTarget.style.color = '#8a8a8a'; } }}
+        >
+          <span style={{ fontSize: 12 }}>{saved ? '✓' : '⊕'}</span>
+          {saved ? 'Saved · Multiple Myeloma Disease Overview' : 'Save to Drive'}
+        </button>
       </div>
     </div>
   );
